@@ -1,0 +1,21 @@
+---
+title: "R Programming Paper Writing: Tips"
+author: "Thiyanga Talagala"
+date: "2026-10-19"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# State of the field
+
+What has been missing is a reusable tool that starts from production and trade statistics,
+follows wood to its end uses and back through recycling, and keeps mass and carbon balanced
+over time. Compared with the tools above, aiphoria adds:
+• absolute amounts and shares solved together in one mass-balanced system
+• in-use stocks with product lifetime distributions, calculated with ODYM
+• carbon stocks and annual CO2 removals for each product stock and age cohort
+• scenarios defined in Excel, with constrained and unconstrained solver modes
+• interactive Sankey diagrams for every year and a network graph of the system

@@ -1,27 +1,22 @@
 ---
 # Example from https://joss.readthedocs.io/en/latest/submitting.html
-title: 'Gala: A Python package for galactic dynamics'
+title: 'tsspiral: An R Package to Create Spiral Version of Time Series Plots'
 tags:
-  - Python
-  - astronomy
-  - dynamics
-  - galactic dynamics
-  - milky way
+  - missing values
+  - forecasting
+  - daily series
+  - visulisation
+  - Seasonal patterns
 authors:
-  - name: Adrian M. Price-Whelan
-    orcid: 0000-0003-0872-7098
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
-  - name: Author 2
-    orcid: 0000-0000-0000-0000
-    affiliation: 2
+  - name: Thiyanga S. Talagala
+    orcid: 0000-0002-0656-9789
+    affiliation: "1" 
 affiliations:
- - name: Lyman Spitzer, Jr. Fellow, Princeton University
+ - name: Department of Statistics, Faulty of Applied Sciences, University of Sri Jayewardenepura, Sri Lanka 
    index: 1
- - name: Institution 2
-   index: 2
-citation_author: Price-Whelan et. al.
-date: 13 August 2017
-year: 2017
+citation_author: Talagala, Thiyanga. S. (2026).
+date: 19 October 2026
+year: 2026
 bibliography: paper.bib
 output: rticles::joss_article
 csl: apa.csl
@@ -30,11 +25,78 @@ journal: JOSS
 
 # Summary
 
+tsspiral is an open-source R software for visualising time series on a polar coordinate.  
+
+By bringing polar-coordinate-based visualisation into routine time series analysis, tsspiral offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
+
+# Statement of need
+
+tsspiral beridges these gaps. It aims to overcomes previous limitations, while adding support for
+
+With conventional time series plots it is very difficult to nested temporal structures, compare seasonal patterns across different time scales, identify missing values,particularly in long time series specially when you have daily data.
+Spiral vrsion of time series plot are useful in addressing these limitations. 
+Creating spiral time series plot often reqires custom codes and careful handing of time series data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data.
+
+Here is an motivation example. The following graph shows relatil bean price and Dambulla vegetable market in Sri Lanka. 
 
 
-# Acknowledgements
+``` r
+library(tidyverse)
+library(tsibble)
+#install.packages("pak")
+#pak::pak("thiyangt/vegetablesSriLanka")
+library("vegetablesSriLanka")
+vegetables_long_tsibble <- vegetables.srilanka |>
+  as_tsibble(key = c(Item, Type, Market),
+    index = Date) 
+beans_dambulla <- vegetables_long_tsibble |>
+  filter(Item == "Beans", Type == "Retail", Market == "Dambulla") 
+ggplot(beans_dambulla, aes(x=Date, y=Price)) + geom_line()
+```
 
-We acknowledge contributions from Brigitta Sipocz, Syrtis Major, and Semyeong
-Oh, and support from Kathryn Johnston during the genesis of this project.
+# State of the field
+
+
+What has been missing is a reusable tool for creating spiral visualisations of time series data that supports the exploration of temporal patterns across multiple time scales. Compared with conventional time series plotting tools, `tsspiral` adds:
+
+- Spiral visualisations of time series using polar coordinates.
+- Alternative representations of temporal patterns, making recurring cycles and seasonal variations easier to explore.
+- A framework for visualising temporal hierarchies, from annual and quarterly patterns to monthly, weekly, and daily observations.
+- New 
+- An open-source implementation in R that supports reproducible visualisation workflows.
+- A flexible approach that can be incorporated into statistical analysis, research communication, and teaching.
+
+# Software design
+
+Each circle is split in to 365. For a leap year circle is divided in to ,,segments. When visualising quarterly data all dates corresponds to that is colour. 
+
+`tsspiral` introduces a new set of `ggplot2` geoms that integrate seamlessly with the `ggplot2` grammar of graphics to create spiral time series plots. This design allows users to generate spiral visualisations within familiar R plotting workflows while retaining the flexibility and composability of `ggplot2`.
+
+
+``` r
+library(patchwork)
+library(tsspiral)
+p1 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiral() + ggtitle("A")
+p2 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiralbar() + ggtitle("B")
+p3 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiralmiss() + ggtitle("C")
+p4 <- temporal_hierarchical(
+ data = beans_dambulla,
+ date = Date,
+ value = Price)
+(p1|p2)/(p3|p4)
+```
+
+# Research impact statement
+
+tsspiral expands the ways researchers can explore time series through a circular shape. By representing time series on a 
+polar coordinates, the package provides alternative way to explore temporal patterns, recurring cycles and changes over time. furthermore,
+this allows to visualise temporal-hierarchcical time series. By aggregating time series under different temporal scales from years to quarters, months, weeks, and days, spiral visualisations can 
+reveal recurring seasonal patterns and relationships between different temporal scales. This allows researchers to explore patterns in the time series
+within and across years, quarters, months, or other time intervals. 
+
+# AI usage disclosure
+
+ChatGPt
+was used to assist with code development and documentation roxygen files writing.
 
 # References
