@@ -25,7 +25,7 @@ journal: JOSS
 
 # Summary
 
-tsspiral is an open-source R software for visualising time series on a polar coordinate.  
+Time series data commonly display seasonal over time. Circular visualisation provides a natural way to represent these recurring patterns. Since most statistical software packages readily support line plots, their convenience and widespread availability have made line plots the conventional choice for visualising time series. As a result, other forms of visualisation have received comparatively less attention, despite their potential to reveal recurring and circular patterns in time series data. tsspiral is an open-source R software for visualising time series on a polar coordinate.  
 
 By bringing polar-coordinate-based visualisation into routine time series analysis, tsspiral offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
 
@@ -34,7 +34,7 @@ By bringing polar-coordinate-based visualisation into routine time series analys
 tsspiral beridges these gaps. It aims to overcomes previous limitations, while adding support for
 
 With conventional time series plots it is very difficult to nested temporal structures, compare seasonal patterns across different time scales, identify missing values,particularly in long time series specially when you have daily data.
-Spiral vrsion of time series plot are useful in addressing these limitations. 
+Spiral vrsion of time series plot are useful in addressing these limitations. The spiral plots supports visualizing long time series  and better  identification of periodic structures in the data [@weber2001visualizing; @rakuschek2026guided].  As John W. Tukey emphasised, “Exploratory data analysis is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”[@@tukey1977exploratory] Guided by this philosophy, exploring alternative visualisations of time series data encourages us to move beyond familiar representations and discover patterns that might otherwise remain hidden. 
 Creating spiral time series plot often reqires custom codes and careful handing of time series data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data.
 
 Here is an motivation example. The following graph shows relatil bean price and Dambulla vegetable market in Sri Lanka. 
@@ -56,6 +56,11 @@ ggplot(beans_dambulla, aes(x=Date, y=Price)) + geom_line()
 
 # State of the field
 
+"Spiral layout has two major advantages for data visualization. First, it is able to visualize data with long
+axes, which greatly improves the resolution of visualization. Second, it is efficient for time series data to reveal
+periodic patterns"
+
+The R package `spiralize`[@spiralize] provides tools for visualising time series data using spiral layouts. Building on this idea, our package introduces a new set of geoms that integrate with ggplot2, extending the grammar of graphics to spiral-based visualisation. This integration allows users to construct spiral plots using a familiar and flexible syntax while retaining the layered approach to data visualisation that makes ggplot2 powerful. Rather than treating spiral plots as standalone graphics, our approach brings them into the grammar of graphics framework, enabling users to explore temporal patterns through a broader range of visual encodings. The R package `spiralize` provides tools for visualising data using spiral layouts. In our approach, we introduce a circular representation of time series data, which we define as a spiral: our approach represents time series data using circular layouts, arranging observations around circles to highlight periodicity, seasonality, and recurring temporal patterns. 
 
 What has been missing is a reusable tool for creating spiral visualisations of time series data that supports the exploration of temporal patterns across multiple time scales. Compared with conventional time series plotting tools, `tsspiral` adds:
 
@@ -65,6 +70,9 @@ What has been missing is a reusable tool for creating spiral visualisations of t
 - New 
 - An open-source implementation in R that supports reproducible visualisation workflows.
 - A flexible approach that can be incorporated into statistical analysis, research communication, and teaching.
+
+@rakuschek2026guided pointed out circular version of time series plots has both advantage and disadvantages. Hence @rakuschek2026guided suggested to use both line and circular version of the plots to get a better idea of the data rather than using circular plots as a replacement to line plots. 
+
 
 # Software design
 
