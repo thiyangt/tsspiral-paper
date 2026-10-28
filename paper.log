@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.28)  28 OCT 2026 13:07
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.28)  28 OCT 2026 14:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -842,54 +842,38 @@ Package: grffile 2019/11/11 v2.1 Extended file name support for graphics (legacy
 Package grffile Info: This package is an empty stub for compatibility on input line 40.
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
-) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2026/10/20 4.8 verbatim text (tvz,hv)
-\c@FV@Env=\count490
-\FV@CodeLineNo=\count491
-\FV@InFile=\read5
-\FV@TabBox=\box78
-\c@FancyVerbLine=\count492
-\FV@StepNumber=\count493
-\FV@OutFile=\write5
-) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
-Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip99
-\fb@frw=\dimen300
-\fb@frh=\dimen301
-\FrameRule=\dimen302
-\FrameSep=\dimen303
 )
-\cslhangindent=\skip100
-\csllabelwidth=\skip101
-\@quotelevel=\count494
-\@quotereset=\count495
+\cslhangindent=\skip99
+\csllabelwidth=\skip100
+\@quotelevel=\count490
+\@quotereset=\count491
 (./paper.aux)
 \openout1 = `paper.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 276.
-LaTeX Font Info:    ... okay on input line 276.
-Package hyperref Info: Link coloring ON on input line 276.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 235.
+LaTeX Font Info:    ... okay on input line 235.
+Package hyperref Info: Link coloring ON on input line 235.
 (./paper.out) (./paper.out)
-\@outlinefile=\write6
-\openout6 = `paper.out'.
+\@outlinefile=\write5
+\openout5 = `paper.out'.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -907,8 +891,8 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'paper.bbl' not found.
 No file paper.bbl.
-Package biblatex Info: Reference section=0 on input line 276.
-Package biblatex Info: Reference segment=0 on input line 276.
+Package biblatex Info: Reference section=0 on input line 235.
+Package biblatex Info: Reference segment=0 on input line 235.
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
 *geometry* verbose mode - [ preamble ] result:
@@ -943,13 +927,13 @@ Package biblatex Info: Reference segment=0 on input line 276.
 * \@reversemargintrue
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 276.
-Package microtype Info: Applying patch `item' on input line 276.
-Package microtype Info: Applying patch `toc' on input line 276.
-Package microtype Info: Applying patch `eqnum' on input line 276.
-Package microtype Info: Applying patch `footnote' on input line 276.
-Package microtype Info: Applying patch `verbatim' on input line 276.
-LaTeX Info: Redefining \microtypesetup on input line 276.
+LaTeX Info: Redefining \microtypecontext on input line 235.
+Package microtype Info: Applying patch `item' on input line 235.
+Package microtype Info: Applying patch `toc' on input line 235.
+Package microtype Info: Applying patch `eqnum' on input line 235.
+Package microtype Info: Applying patch `footnote' on input line 235.
+Package microtype Info: Applying patch `verbatim' on input line 235.
+LaTeX Info: Redefining \microtypesetup on input line 235.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -965,29 +949,27 @@ Package microtype Info: Loading generic protrusion settings for font family
 (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-cmr.cfg
 File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msa on input line 277.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 236.
 (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 277.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 236.
 (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
 
-Package hyperref Warning: Suppressing link with empty target on input line 303.
+Package hyperref Warning: Suppressing link with empty target on input line 262.
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 303.
+Package hyperref Warning: Suppressing link with empty target on input line 262.
 
 
-Package hyperref Warning: Suppressing link with empty target on input line 303.
+Package hyperref Warning: Suppressing link with empty target on input line 262.
 
-LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <10> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 349.
 File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
 
@@ -998,17 +980,10 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 360.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 322.
 [1
 
 ]
-Underfull \vbox (badness 10000) detected at line 447
- []
-
-
-Overfull \vbox (0.81601pt too high) detected at line 447
- []
-
 File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
 
@@ -1019,9 +994,6 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
-Underfull \vbox (badness 10000) detected at line 512
- []
-
 File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 <C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
 
@@ -1031,27 +1003,7 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
-[3]
-File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
-<C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
-
-Package fancyhdr Warning: \headheight is too small (62.59596pt): 
-(fancyhdr)                Make it at least 63.55022pt, for example:
-(fancyhdr)                \setlength{\headheight}{63.55022pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
-
-[4]
-File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
-<C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
-
-Package fancyhdr Warning: \headheight is too small (62.59596pt): 
-(fancyhdr)                Make it at least 63.55022pt, for example:
-(fancyhdr)                \setlength{\headheight}{63.55022pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
-
-[5] (./paper.aux)
+[3] (./paper.aux)
  ***********
 LaTeX2e <2026-06-01>
 L3 programming layer <2026-09-09>
@@ -1063,12 +1015,12 @@ Package logreq Info: Writing requests to 'paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 37201 strings out of 469689
- 768053 string characters out of 5463142
- 1664510 words of memory out of 5000000
- 65741 multiletter control sequences out of 15000+600000
- 633654 words of font info for 79 fonts, out of 8000000 for 9000
+ 36688 strings out of 469689
+ 759851 string characters out of 5463142
+ 1655503 words of memory out of 5000000
+ 65238 multiletter control sequences out of 15000+600000
+ 633646 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  92i,12n,94p,1194b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on paper.pdf (5 pages).
+Output written on paper.pdf (3 pages).

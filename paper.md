@@ -20,7 +20,7 @@ year: 2026
 bibliography: paper.bib
 output: rticles::joss_article
 csl: apa.csl
-
+journal: JOSS
 ---
 
 # Summary
@@ -31,175 +31,37 @@ By bringing polar-coordinate-based visualisation into routine time series analys
 
 # Statement of need
 
-tsspiral beridges these gaps. It aims to overcomes previous limitations, while adding support for
+tsspiral beridges these gaps. 
+With conventional time series plots it is very difficult to nested temporal structures, compare seasonal patterns across different time scales, identify missing values,particularly in long time series specially when you have daily data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data. missing values, this is very difficult with the traditional time series plot.
+In addition, identifying missing values and representing the dates associated with them can be challenging using traditional time series plots.
+Spiral version of time series plot are useful in addressing these limitations. The spiral plots supports visualizing long time series  and better  identification of periodic structures in the data [@weber2001visualizing; @rakuschek2026guided].  As John W. Tukey emphasised, “Exploratory data analysis is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”[@tukey1977exploratory] Guided by this philosophy, exploring alternative visualisations of time series data encourages us to move beyond familiar representations and discover patterns that might otherwise remain hidden. 
+Creating spiral time series plot often requires custom codes and careful handing of time series data. 
 
-With conventional time series plots it is very difficult to nested temporal structures, compare seasonal patterns across different time scales, identify missing values,particularly in long time series specially when you have daily data.
-Spiral vrsion of time series plot are useful in addressing these limitations. The spiral plots supports visualizing long time series  and better  identification of periodic structures in the data [@weber2001visualizing; @rakuschek2026guided].  As John W. Tukey emphasised, “Exploratory data analysis is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”[@@tukey1977exploratory] Guided by this philosophy, exploring alternative visualisations of time series data encourages us to move beyond familiar representations and discover patterns that might otherwise remain hidden. 
-Creating spiral time series plot often reqires custom codes and careful handing of time series data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data.
+Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  daily tourist arrivals to Sri Lanka from 2023 January 1 to 2025 December 31. This time series plot helps us to understand the overall behaviour of the data across the full time span. We can see a clear upward trend and a seasonal behavior in the data. But through the time series plot, it is difficult to answer the following questions
 
-Here is an motivation example. The following graph shows the tie series plot of  daily tourist arrivals to Sri Lanka. 
+1. When is Sri Lanka busiest?
 
+2. When is it quiet?
 
-``` r
-library(tsspiral)
-library(viridis)
-library(ggplot2)
-library(tsibble)
-library(tidyverse)
-data(tourism.srilanka)
-ts <- tourism.srilanka |>
-  mutate(Date = dmy(Date)) |>        
-  as_tsibble(index = Date)
-ggplot(ts, aes(x=Date, y=Value)) + geom_line()
-```
+3. Are there predictable peaks and troughs throughout the year?
 
+4. Which months or seasons attract more visitors?
 
-``` r
-library(patchwork)
-p1 <- ggplot(
-  ts,
-  aes(
-    x = Date,
-    y = Value,
-    fill = Value
-  )
-) +
-  geom_tsspiral(
-    ring_spacing = 2
-  ) +
-  scale_fill_viridis_c(
-    option = "inferno",
-    direction = -1,
-    guide = guide_colorbar(reverse = FALSE)
-  ) +
-  theme_void()
-```
+5. Do certain days or periods consistently rank among the busiest?
+
+6. Are there recurring days with lower arrivals that could be used for maintenance, conservation, or quiet operations?
+
+7. How do recurring seasonal patterns differ across years—for example, between January 2023, January 2024, and January 2025?
 
 
-``` r
-git_colours <- rev(c(
-  "#d73027",
-  "#f46d43",
-  "#fdae61",
-  "#ffffbf",
-  "#74add1",
-  "#4575b4"
-))
-
-p2 <- ts |>
-  dplyr::mutate(
-    Value_group = cut(
-      Value,
-      breaks = c(-Inf, 999, 2500, 5000, 7500, 10000, Inf),
-      labels = c(
-        "<1000",
-        "1000–2500",
-        "2501–5000",
-        "5001–7500",
-        "7501–10000",
-        ">10000"
-      ),
-      right = TRUE
-    )
-  ) |>
-  ggplot(
-    aes(
-      x = Date,
-      y = Value,
-      fill = Value_group
-    )
-  ) +
-  geom_tsspiral(
-    ring_spacing = 2
-  ) +
-  scale_fill_manual(
-    values = git_colours,
-    drop = FALSE
-  ) +
-  theme_void()
-
-p3 <- ggplot(
-  ts,
-  aes(
-    x = Date,
-    y = Value,
-    fill = Value
-  )
-) +
-  geom_tsspiralbar(
-    ring_spacing = 2
-  ) +
-  scale_fill_viridis_c(
-    option = "inferno",
-    direction = -1,
-    guide = guide_colorbar(reverse = FALSE)
-  ) +
-  theme_void()
-(p1|p2)
-```
 
 
-``` r
-p3
-```
 
 
-``` r
-library(patchwork)
-library(ggplot2)
-library(scales)
 
-common_limits <- range(ts$Value, na.rm = TRUE)
-common_breaks <- common_limits
 
-common_scale <- scale_fill_viridis_c(
-  option = "C",
-  limits = common_limits,
-  breaks = common_breaks,
-  labels = label_number(),
-  na.value = "grey90",
-  name = "Value"
-)
 
-p23 <- temporal_hierarchical(
-  ts |> dplyr::filter(lubridate::year(Date) == 2023),
-  date = Date,
-  value = Value
-) +
-  common_scale +
-  theme(legend.position = "bottom")
 
-p24 <- temporal_hierarchical(
-  ts |> dplyr::filter(lubridate::year(Date) == 2024),
-  date = Date,
-  value = Value
-) +
-  common_scale +
-  theme(legend.position = "bottom")
-
-p25 <- temporal_hierarchical(
-  ts |> dplyr::filter(lubridate::year(Date) == 2025),
-  date = Date,
-  value = Value
-) +
-  common_scale +
-  theme(legend.position = "bottom")
-
-p23 <- p23 + ggtitle("2023")
-p24 <- p24 + ggtitle("2024")
-p25 <- p25 + ggtitle("2025")
-
-(p23 | p24 | p25) +
-  plot_layout(guides = "collect") &
-  theme(
-    legend.position = "bottom",
-    plot.title = element_text(
-      hjust = 0.5,
-      face = "bold",
-      size = 14
-    )
-  )
-```
 
 
 # State of the field
