@@ -73,7 +73,7 @@ library(patchwork)
 p1/p2
 ```
 
-![Figure 1. Examples of time-series data motivating the development of the package: (a) daily tourist arrivals to Sri Lanka from 2023–2025, illustrating long-term trends and recurring temporal patterns; and (b) hourly pedestrian counts at Melbourne Central during April 2026, illustrating complex within-day and within-week temporal patterns.](figures/image1.png){width=\linewidth}
+![Figure 1: Examples of time-series data motivating the development of the package: (a) daily tourist arrivals to Sri Lanka from 2023–2025, illustrating long-term trends and recurring temporal patterns; and (b) hourly pedestrian counts at Melbourne Central during April 2026, illustrating complex within-day and within-week temporal patterns.](figures/image1.png){width=\linewidth}
 
 To obtain a broader picture of the patterns in the two situations described above, we can make the plots interactive, allowing users to zoom in and explore specific regions of the data. However, interactive visualisations are not always appropriate. In particular, journal publications and printed reports often require static figures that communicate the main findings clearly without requiring user interaction. Therefore, we need to consider alternative visualisation techniques that can present the same data effectively in a static format while still allowing us to capture both the overall pattern and important local features of the data.
 
