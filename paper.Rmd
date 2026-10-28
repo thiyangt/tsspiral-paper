@@ -53,7 +53,8 @@ Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  dai
 
 7. How do recurring seasonal patterns differ across years—for example, between January 2023, January 2024, and January 2025?
 
-```{r p1, warning=FALSE, message=FALSE, eval=FALSE, echo=FALSE,}
+```{r p1, warning=FALSE, message=FALSE, eval=FALSE, echo=FALSE}
+library(readr)
 library(tsspiral)
 library(viridis)
 library(ggplot2)
@@ -63,13 +64,18 @@ data(tourism.srilanka)
 ts <- tourism.srilanka |>
   mutate(Date = dmy(Date)) |>        
   as_tsibble(index = Date)
-ggplot(ts, aes(x=Date, y=Value)) + geom_line()
+p1 <- ggplot(ts, aes(x=Date, y=Value)) + geom_line()
+
+ped_hourly <- read_csv("data/ped_hourly.csv")
+p2 <- ggplot(ped_hourly, aes(x=DateHour,
+                       y=HourlyCount)) + geom_line()
+library(patchwork)
+p1/p2
 ```
 
-```{r p2, echo=FALSE, eval=FALSE}
-#https://data.melbourne.vic.gov.au/explore/dataset/pedestrian-counting-system-monthly-counts-per-hour/information/
+![Figure 1. Examples of time-series data motivating the development of the package: (a) daily tourist arrivals to Sri Lanka from 2023–2025, illustrating long-term trends and recurring temporal patterns; and (b) hourly pedestrian counts at Melbourne Central during April 2026, illustrating complex within-day and within-week temporal patterns.](figures/image1.png){width=\linewidth}
 
-```
+To obtain a broader picture of the patterns in the two situations described above, we can make the plots interactive, allowing users to zoom in and explore specific regions of the data. However, interactive visualisations are not always appropriate. In particular, journal publications and printed reports often require static figures that communicate the main findings clearly without requiring user interaction. Therefore, we need to consider alternative visualisation techniques that can present the same data effectively in a static format while still allowing us to capture both the overall pattern and important local features of the data.
 
 ```{r, fig.height=3, fig.width=3, eval=FALSE, echo=FALSE}
 library(patchwork)
@@ -213,6 +219,17 @@ p25 <- p25 + ggtitle("2025")
   )
 ```
 
+
+
+```{r, eval=FALSE}
+library(tsspiral)
+calendar_hourly_polar(
+  ped_hourly,
+  DateHour,
+  HourlyCount,
+  month = "2026-04-01"
+)
+```
 
 # State of the field
 

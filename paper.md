@@ -56,6 +56,14 @@ Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  dai
 
 
 
+``` r
+library(readr)
+ped_hourly <- read_csv("data/ped_hourly.csv")
+ggplot(ped_hourly, aes(x=DateHour,
+                       y=HourlyCount)) + geom_line()
+```
+
+To obtain a broader picture of the patterns in the two situations described above, we can make the plots interactive, allowing users to zoom in and explore specific regions of the data. However, interactive visualisations are not always appropriate. In particular, journal publications and printed reports often require static figures that communicate the main findings clearly without requiring user interaction. Therefore, we need to consider alternative visualisation techniques that can present the same data effectively in a static format while still allowing us to capture both the overall pattern and important local features of the data.
 
 
 
@@ -63,6 +71,20 @@ Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  dai
 
 
 
+
+
+
+
+
+``` r
+library(tsspiral)
+calendar_hourly_polar(
+  ped_hourly,
+  DateHour,
+  HourlyCount,
+  month = "2026-04-01"
+)
+```
 
 # State of the field
 
