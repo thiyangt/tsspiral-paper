@@ -39,19 +39,33 @@ Creating spiral time series plot often reqires custom codes and careful handing 
 
 Here is an motivation example. The following graph shows relatil bean price and Dambulla vegetable market in Sri Lanka. 
 
-```{r, warning=FALSE, message=FALSE, eval=FALSE}
-library(tidyverse)
+```{r, warning=FALSE, message=FALSE}
+library(tsspiral)
+library(viridis)
+library(ggplot2)
 library(tsibble)
-#install.packages("pak")
-#pak::pak("thiyangt/vegetablesSriLanka")
-library("vegetablesSriLanka")
-vegetables_long_tsibble <- vegetables.srilanka |>
-  as_tsibble(key = c(Item, Type, Market),
-    index = Date) 
-beans_dambulla <- vegetables_long_tsibble |>
-  filter(Item == "Beans", Type == "Retail", Market == "Dambulla") 
-ggplot(beans_dambulla, aes(x=Date, y=Price)) + geom_line()
+library(tidyverse)
+data(tourism.srilanka)
+ts <- tourism.srilanka |>
+  mutate(Date = dmy(Date)) |>        
+  as_tsibble(index = Date)
+ggplot(ts, aes(x=Date, y=Value)) + geom_line()
 ```
+
+```{r}
+ggplot(ts,
+  aes(
+    x = Date,
+    y = Value,
+   fill = Value
+  ) ) +
+  geom_tsspiral(
+    ring_spacing = 2
+   ) +
+   scale_fill_viridis_c() +
+   theme_void()
+```
+
 
 # State of the field
 

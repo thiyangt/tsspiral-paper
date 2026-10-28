@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.19)  22 OCT 2026 09:47
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.28)  28 OCT 2026 11:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -843,12 +843,13 @@ Package grffile Info: This package is an empty stub for compatibility on input l
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/parskip/parskip.sty
 Package: parskip 2021-03-14 v2.0h non-zero parskip adjustments
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
-Package: fancyvrb 2026/08/13 4.7 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count490
+Package: fancyvrb 2026/10/20 4.8 verbatim text (tvz,hv)
+\c@FV@Env=\count490
+\FV@CodeLineNo=\count491
 \FV@InFile=\read5
 \FV@TabBox=\box78
-\c@FancyVerbLine=\count491
-\FV@StepNumber=\count492
+\c@FancyVerbLine=\count492
+\FV@StepNumber=\count493
 \FV@OutFile=\write5
 ) (c:/Users/DELL/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
@@ -860,9 +861,9 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 )
 \cslhangindent=\skip100
 \csllabelwidth=\skip101
-\@quotelevel=\count493
-\@quotereset=\count494
-(./paper.aux)
+\@quotelevel=\count494
+\@quotereset=\count495
+No file paper.aux.
 \openout1 = `paper.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 276.
@@ -886,9 +887,11 @@ LaTeX Font Info:    ... okay on input line 276.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 276.
 LaTeX Font Info:    ... okay on input line 276.
 Package hyperref Info: Link coloring ON on input line 276.
-(./paper.out) (./paper.out)
 \@outlinefile=\write6
 \openout6 = `paper.out'.
+
+
+Package hyperref Warning: Rerun to get /PageLabels entry.
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
@@ -997,61 +1000,26 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <8> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 361.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 360.
 [1
 
 ]
-Overfull \hbox (111.41139pt too wide) detected at line 434
-\TU/lmtt/m/n/10 p1 []<-[] []\TU/lmtt/b/n/10 ggplot[]\TU/lmtt/m/n/10 (beans_dambulla, []\TU/lmtt/b/n/10 aes[]\TU/lmtt/m/n/10 ([]x=[]Date, []y=[]Price, []fill=[]Price)) []\TU/lmtt/b/n/10 +[] []geom_tsspiral[]\TU/lmtt/m/n/10 () []\TU/lmtt/b/n/10 +[] []ggtitle[]\TU/lmtt/m/n/10 ([]"A"[]) 
- []
+! Undefined control sequence.
+l.362 \pandocbounded
+                    {\includegraphics[keepaspectratio]{paper_files/paper_fil...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
-
-Overfull \hbox (127.16139pt too wide) detected at line 435
-\TU/lmtt/m/n/10 p2 []<-[] []\TU/lmtt/b/n/10 ggplot[]\TU/lmtt/m/n/10 (beans_dambulla, []\TU/lmtt/b/n/10 aes[]\TU/lmtt/m/n/10 ([]x=[]Date, []y=[]Price, []fill=[]Price)) []\TU/lmtt/b/n/10 +[] []geom_tsspiralbar[]\TU/lmtt/m/n/10 () []\TU/lmtt/b/n/10 +[] []ggtitle[]\TU/lmtt/m/n/10 ([]"B"[]) 
- []
-
-
-Overfull \hbox (132.41139pt too wide) detected at line 436
-\TU/lmtt/m/n/10 p3 []<-[] []\TU/lmtt/b/n/10 ggplot[]\TU/lmtt/m/n/10 (beans_dambulla, []\TU/lmtt/b/n/10 aes[]\TU/lmtt/m/n/10 ([]x=[]Date, []y=[]Price, []fill=[]Price)) []\TU/lmtt/b/n/10 +[] []geom_tsspiralmiss[]\TU/lmtt/m/n/10 () []\TU/lmtt/b/n/10 +[] []ggtitle[]\TU/lmtt/m/n/10 ([]"C"[]) 
- []
-
-File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
-<C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
-
-Package fancyhdr Warning: \headheight is too small (62.59596pt): 
-(fancyhdr)                Make it at least 63.55022pt, for example:
-(fancyhdr)                \setlength{\headheight}{63.55022pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
-
-[2]
-File: C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
-<C:/Users/DELL/AppData/Local/R/win-library/4.5/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
-
-Package fancyhdr Warning: \headheight is too small (62.59596pt): 
-(fancyhdr)                Make it at least 63.55022pt, for example:
-(fancyhdr)                \setlength{\headheight}{63.55022pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
-
-[3] (./paper.aux)
- ***********
-LaTeX2e <2026-06-01>
-L3 programming layer <2026-09-09>
- ***********
-Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 31549ADD394EA32B8F17DDDDFB7E3C2D;893.
-Package logreq Info: Writing requests to 'paper.run.xml'.
-\openout1 = `paper.run.xml'.
-
- ) 
+ 
 Here is how much of TeX's memory you used:
- 37195 strings out of 469689
- 767977 string characters out of 5463142
- 1663602 words of memory out of 5000000
- 65733 multiletter control sequences out of 15000+600000
- 633662 words of font info for 80 fonts, out of 8000000 for 9000
+ 37161 strings out of 469689
+ 767349 string characters out of 5463142
+ 1662907 words of memory out of 5000000
+ 65716 multiletter control sequences out of 15000+600000
+ 633646 words of font info for 78 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  92i,12n,94p,1194b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
-
-Output written on paper.pdf (3 pages).
+Output written on paper.pdf (1 page).
