@@ -20,7 +20,7 @@ year: 2026
 bibliography: paper.bib
 output: rticles::joss_article
 csl: apa.csl
-journal: JOSS
+
 ---
 
 # Summary
@@ -37,22 +37,170 @@ With conventional time series plots it is very difficult to nested temporal stru
 Spiral vrsion of time series plot are useful in addressing these limitations. The spiral plots supports visualizing long time series  and better  identification of periodic structures in the data [@weber2001visualizing; @rakuschek2026guided].  As John W. Tukey emphasised, “Exploratory data analysis is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”[@@tukey1977exploratory] Guided by this philosophy, exploring alternative visualisations of time series data encourages us to move beyond familiar representations and discover patterns that might otherwise remain hidden. 
 Creating spiral time series plot often reqires custom codes and careful handing of time series data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data.
 
-Here is an motivation example. The following graph shows relatil bean price and Dambulla vegetable market in Sri Lanka. 
+Here is an motivation example. The following graph shows the tie series plot of  daily tourist arrivals to Sri Lanka. 
 
 
 ``` r
-library(tidyverse)
+library(tsspiral)
+library(viridis)
+library(ggplot2)
 library(tsibble)
-#install.packages("pak")
-#pak::pak("thiyangt/vegetablesSriLanka")
-library("vegetablesSriLanka")
-vegetables_long_tsibble <- vegetables.srilanka |>
-  as_tsibble(key = c(Item, Type, Market),
-    index = Date) 
-beans_dambulla <- vegetables_long_tsibble |>
-  filter(Item == "Beans", Type == "Retail", Market == "Dambulla") 
-ggplot(beans_dambulla, aes(x=Date, y=Price)) + geom_line()
+library(tidyverse)
+data(tourism.srilanka)
+ts <- tourism.srilanka |>
+  mutate(Date = dmy(Date)) |>        
+  as_tsibble(index = Date)
+ggplot(ts, aes(x=Date, y=Value)) + geom_line()
 ```
+
+
+``` r
+library(patchwork)
+p1 <- ggplot(
+  ts,
+  aes(
+    x = Date,
+    y = Value,
+    fill = Value
+  )
+) +
+  geom_tsspiral(
+    ring_spacing = 2
+  ) +
+  scale_fill_viridis_c(
+    option = "inferno",
+    direction = -1,
+    guide = guide_colorbar(reverse = FALSE)
+  ) +
+  theme_void()
+```
+
+
+``` r
+git_colours <- rev(c(
+  "#d73027",
+  "#f46d43",
+  "#fdae61",
+  "#ffffbf",
+  "#74add1",
+  "#4575b4"
+))
+
+p2 <- ts |>
+  dplyr::mutate(
+    Value_group = cut(
+      Value,
+      breaks = c(-Inf, 999, 2500, 5000, 7500, 10000, Inf),
+      labels = c(
+        "<1000",
+        "1000–2500",
+        "2501–5000",
+        "5001–7500",
+        "7501–10000",
+        ">10000"
+      ),
+      right = TRUE
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = Date,
+      y = Value,
+      fill = Value_group
+    )
+  ) +
+  geom_tsspiral(
+    ring_spacing = 2
+  ) +
+  scale_fill_manual(
+    values = git_colours,
+    drop = FALSE
+  ) +
+  theme_void()
+
+p3 <- ggplot(
+  ts,
+  aes(
+    x = Date,
+    y = Value,
+    fill = Value
+  )
+) +
+  geom_tsspiralbar(
+    ring_spacing = 2
+  ) +
+  scale_fill_viridis_c(
+    option = "inferno",
+    direction = -1,
+    guide = guide_colorbar(reverse = FALSE)
+  ) +
+  theme_void()
+(p1|p2)
+```
+
+
+``` r
+p3
+```
+
+
+``` r
+library(patchwork)
+library(ggplot2)
+library(scales)
+
+common_limits <- range(ts$Value, na.rm = TRUE)
+common_breaks <- common_limits
+
+common_scale <- scale_fill_viridis_c(
+  option = "C",
+  limits = common_limits,
+  breaks = common_breaks,
+  labels = label_number(),
+  na.value = "grey90",
+  name = "Value"
+)
+
+p23 <- temporal_hierarchical(
+  ts |> dplyr::filter(lubridate::year(Date) == 2023),
+  date = Date,
+  value = Value
+) +
+  common_scale +
+  theme(legend.position = "bottom")
+
+p24 <- temporal_hierarchical(
+  ts |> dplyr::filter(lubridate::year(Date) == 2024),
+  date = Date,
+  value = Value
+) +
+  common_scale +
+  theme(legend.position = "bottom")
+
+p25 <- temporal_hierarchical(
+  ts |> dplyr::filter(lubridate::year(Date) == 2025),
+  date = Date,
+  value = Value
+) +
+  common_scale +
+  theme(legend.position = "bottom")
+
+p23 <- p23 + ggtitle("2023")
+p24 <- p24 + ggtitle("2024")
+p25 <- p25 + ggtitle("2025")
+
+(p23 | p24 | p25) +
+  plot_layout(guides = "collect") &
+  theme(
+    legend.position = "bottom",
+    plot.title = element_text(
+      hjust = 0.5,
+      face = "bold",
+      size = 14
+    )
+  )
+```
+
 
 # State of the field
 
@@ -81,18 +229,6 @@ Each circle is split in to 365. For a leap year circle is divided in to ,,segmen
 `tsspiral` introduces a new set of `ggplot2` geoms that integrate seamlessly with the `ggplot2` grammar of graphics to create spiral time series plots. This design allows users to generate spiral visualisations within familiar R plotting workflows while retaining the flexibility and composability of `ggplot2`.
 
 
-``` r
-library(patchwork)
-library(tsspiral)
-p1 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiral() + ggtitle("A")
-p2 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiralbar() + ggtitle("B")
-p3 <- ggplot(beans_dambulla, aes(x=Date, y=Price, fill=Price)) + geom_tsspiralmiss() + ggtitle("C")
-p4 <- temporal_hierarchical(
- data = beans_dambulla,
- date = Date,
- value = Price)
-(p1|p2)/(p3|p4)
-```
 
 # Research impact statement
 

@@ -37,7 +37,7 @@ With conventional time series plots it is very difficult to nested temporal stru
 Spiral vrsion of time series plot are useful in addressing these limitations. The spiral plots supports visualizing long time series  and better  identification of periodic structures in the data [@weber2001visualizing; @rakuschek2026guided].  As John W. Tukey emphasised, “Exploratory data analysis is an attitude, a state of flexibility, a willingness to look for those things that we believe are not there, as well as those we believe to be there.”[@@tukey1977exploratory] Guided by this philosophy, exploring alternative visualisations of time series data encourages us to move beyond familiar representations and discover patterns that might otherwise remain hidden. 
 Creating spiral time series plot often reqires custom codes and careful handing of time series data. Furthermore, when data comes as categorical variables we can not use traditional time series plots to visualise data.
 
-Here is an motivation example. The following graph shows relatil bean price and Dambulla vegetable market in Sri Lanka. 
+Here is an motivation example. The following graph shows the tie series plot of  daily tourist arrivals to Sri Lanka. 
 
 ```{r, warning=FALSE, message=FALSE, eval=FALSE}
 library(tsspiral)
@@ -139,7 +139,7 @@ p3 <- ggplot(
 p3
 ```
 
-```{r}
+```{r, eval=FALSE}
 library(patchwork)
 library(ggplot2)
 library(scales)
