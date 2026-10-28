@@ -344,40 +344,115 @@ series plots to visualise data.
 Here is an motivation example. The following graph shows relatil bean
 price and Dambulla vegetable market in Sri Lanka.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(tsspiral)}
-\FunctionTok{library}\NormalTok{(viridis)}
-\FunctionTok{library}\NormalTok{(ggplot2)}
-\FunctionTok{library}\NormalTok{(tsibble)}
-\FunctionTok{library}\NormalTok{(tidyverse)}
-\FunctionTok{data}\NormalTok{(tourism.srilanka)}
-\NormalTok{ts }\OtherTok{\textless{}{-}}\NormalTok{ tourism.srilanka }\SpecialCharTok{|\textgreater{}}
-  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{Date =} \FunctionTok{dmy}\NormalTok{(Date)) }\SpecialCharTok{|\textgreater{}}        
-  \FunctionTok{as\_tsibble}\NormalTok{(}\AttributeTok{index =}\NormalTok{ Date)}
-\FunctionTok{ggplot}\NormalTok{(ts, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Date, }\AttributeTok{y=}\NormalTok{Value)) }\SpecialCharTok{+} \FunctionTok{geom\_line}\NormalTok{()}
-\end{Highlighting}
-\end{Shaded}
-
 \pandocbounded{\includegraphics[keepaspectratio]{paper_files/paper_files/figure-latex/unnamed-chunk-1-1.pdf}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\FunctionTok{ggplot}\NormalTok{(ts,}
+\FunctionTok{library}\NormalTok{(patchwork)}
+\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}
+\NormalTok{  ts,}
   \FunctionTok{aes}\NormalTok{(}
     \AttributeTok{x =}\NormalTok{ Date,}
     \AttributeTok{y =}\NormalTok{ Value,}
-   \AttributeTok{fill =}\NormalTok{ Value}
-\NormalTok{  ) ) }\SpecialCharTok{+}
+    \AttributeTok{fill =}\NormalTok{ Value}
+\NormalTok{  )}
+\NormalTok{) }\SpecialCharTok{+}
   \FunctionTok{geom\_tsspiral}\NormalTok{(}
     \AttributeTok{ring\_spacing =} \DecValTok{2}
-\NormalTok{   ) }\SpecialCharTok{+}
-   \FunctionTok{scale\_fill\_viridis\_c}\NormalTok{() }\SpecialCharTok{+}
-   \FunctionTok{theme\_void}\NormalTok{()}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_c}\NormalTok{(}
+    \AttributeTok{option =} \StringTok{"inferno"}\NormalTok{,}
+    \AttributeTok{direction =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}
+    \AttributeTok{guide =} \FunctionTok{guide\_colorbar}\NormalTok{(}\AttributeTok{reverse =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
 
-\pandocbounded{\includegraphics[keepaspectratio]{paper_files/paper_files/figure-latex/unnamed-chunk-2-1.pdf}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{git\_colours }\OtherTok{\textless{}{-}} \FunctionTok{rev}\NormalTok{(}\FunctionTok{c}\NormalTok{(}
+  \StringTok{"\#d73027"}\NormalTok{,}
+  \StringTok{"\#f46d43"}\NormalTok{,}
+  \StringTok{"\#fdae61"}\NormalTok{,}
+  \StringTok{"\#ffffbf"}\NormalTok{,}
+  \StringTok{"\#74add1"}\NormalTok{,}
+  \StringTok{"\#4575b4"}
+\NormalTok{))}
+
+\NormalTok{p2 }\OtherTok{\textless{}{-}}\NormalTok{ ts }\SpecialCharTok{|\textgreater{}}
+\NormalTok{  dplyr}\SpecialCharTok{::}\FunctionTok{mutate}\NormalTok{(}
+    \AttributeTok{Value\_group =} \FunctionTok{cut}\NormalTok{(}
+\NormalTok{      Value,}
+      \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{, }\DecValTok{999}\NormalTok{, }\DecValTok{2500}\NormalTok{, }\DecValTok{5000}\NormalTok{, }\DecValTok{7500}\NormalTok{, }\DecValTok{10000}\NormalTok{, }\ConstantTok{Inf}\NormalTok{),}
+      \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}
+        \StringTok{"\textless{}1000"}\NormalTok{,}
+        \StringTok{"1000–2500"}\NormalTok{,}
+        \StringTok{"2501–5000"}\NormalTok{,}
+        \StringTok{"5001–7500"}\NormalTok{,}
+        \StringTok{"7501–10000"}\NormalTok{,}
+        \StringTok{"\textgreater{}10000"}
+\NormalTok{      ),}
+      \AttributeTok{right =} \ConstantTok{TRUE}
+\NormalTok{    )}
+\NormalTok{  ) }\SpecialCharTok{|\textgreater{}}
+  \FunctionTok{ggplot}\NormalTok{(}
+    \FunctionTok{aes}\NormalTok{(}
+      \AttributeTok{x =}\NormalTok{ Date,}
+      \AttributeTok{y =}\NormalTok{ Value,}
+      \AttributeTok{fill =}\NormalTok{ Value\_group}
+\NormalTok{    )}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tsspiral}\NormalTok{(}
+    \AttributeTok{ring\_spacing =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_manual}\NormalTok{(}
+    \AttributeTok{values =}\NormalTok{ git\_colours,}
+    \AttributeTok{drop =} \ConstantTok{FALSE}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}
+
+\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(}
+\NormalTok{  ts,}
+  \FunctionTok{aes}\NormalTok{(}
+    \AttributeTok{x =}\NormalTok{ Date,}
+    \AttributeTok{y =}\NormalTok{ Value,}
+    \AttributeTok{fill =}\NormalTok{ Value}
+\NormalTok{  )}
+\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_tsspiralbar}\NormalTok{(}
+    \AttributeTok{ring\_spacing =} \DecValTok{2}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{scale\_fill\_viridis\_c}\NormalTok{(}
+    \AttributeTok{option =} \StringTok{"inferno"}\NormalTok{,}
+    \AttributeTok{direction =} \SpecialCharTok{{-}}\DecValTok{1}\NormalTok{,}
+    \AttributeTok{guide =} \FunctionTok{guide\_colorbar}\NormalTok{(}\AttributeTok{reverse =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  ) }\SpecialCharTok{+}
+  \FunctionTok{theme\_void}\NormalTok{()}
+\NormalTok{(p1}\SpecialCharTok{|}\NormalTok{p2)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/paper_files/figure-latex/unnamed-chunk-3-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{p3}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/paper_files/figure-latex/unnamed-chunk-4-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{temporal\_hierarchical}\NormalTok{(}
+ \AttributeTok{data =}\NormalTok{ ts,}
+ \AttributeTok{date =}\NormalTok{ Date,}
+ \AttributeTok{value =}\NormalTok{ Value)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{paper_files/paper_files/figure-latex/unnamed-chunk-5-1.pdf}}
 
 \section{State of the field}\label{state-of-the-field}
 
@@ -445,21 +520,6 @@ integrate seamlessly with the \texttt{ggplot2} grammar of graphics to
 create spiral time series plots. This design allows users to generate
 spiral visualisations within familiar R plotting workflows while
 retaining the flexibility and composability of \texttt{ggplot2}.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{library}\NormalTok{(patchwork)}
-\FunctionTok{library}\NormalTok{(tsspiral)}
-\NormalTok{p1 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(beans\_dambulla, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Date, }\AttributeTok{y=}\NormalTok{Price, }\AttributeTok{fill=}\NormalTok{Price)) }\SpecialCharTok{+} \FunctionTok{geom\_tsspiral}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"A"}\NormalTok{)}
-\NormalTok{p2 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(beans\_dambulla, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Date, }\AttributeTok{y=}\NormalTok{Price, }\AttributeTok{fill=}\NormalTok{Price)) }\SpecialCharTok{+} \FunctionTok{geom\_tsspiralbar}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"B"}\NormalTok{)}
-\NormalTok{p3 }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(beans\_dambulla, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{Date, }\AttributeTok{y=}\NormalTok{Price, }\AttributeTok{fill=}\NormalTok{Price)) }\SpecialCharTok{+} \FunctionTok{geom\_tsspiralmiss}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{ggtitle}\NormalTok{(}\StringTok{"C"}\NormalTok{)}
-\NormalTok{p4 }\OtherTok{\textless{}{-}} \FunctionTok{temporal\_hierarchical}\NormalTok{(}
- \AttributeTok{data =}\NormalTok{ beans\_dambulla,}
- \AttributeTok{date =}\NormalTok{ Date,}
- \AttributeTok{value =}\NormalTok{ Price)}
-\NormalTok{(p1}\SpecialCharTok{|}\NormalTok{p2)}\SpecialCharTok{/}\NormalTok{(p3}\SpecialCharTok{|}\NormalTok{p4)}
-\end{Highlighting}
-\end{Shaded}
 
 \section{Research impact statement}\label{research-impact-statement}
 
