@@ -55,13 +55,7 @@ Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  dai
 
 
 
-
-``` r
-library(readr)
-ped_hourly <- read_csv("data/ped_hourly.csv")
-ggplot(ped_hourly, aes(x=DateHour,
-                       y=HourlyCount)) + geom_line()
-```
+![Figure 1: Examples of time-series data motivating the development of the package: (a) daily tourist arrivals to Sri Lanka from 2023–2025, illustrating long-term trends and recurring temporal patterns; and (b) hourly pedestrian counts at Melbourne Central during April 2026, illustrating complex within-day and within-week temporal patterns.](figures/image1.png){width=\linewidth}
 
 To obtain a broader picture of the patterns in the two situations described above, we can make the plots interactive, allowing users to zoom in and explore specific regions of the data. However, interactive visualisations are not always appropriate. In particular, journal publications and printed reports often require static figures that communicate the main findings clearly without requiring user interaction. Therefore, we need to consider alternative visualisation techniques that can present the same data effectively in a static format while still allowing us to capture both the overall pattern and important local features of the data.
 
@@ -108,7 +102,52 @@ What has been missing is a reusable tool for creating spiral visualisations of t
 
 # Software design
 
-Each circle is split in to 365. For a leap year circle is divided in to ,,segments. When visualising quarterly data all dates corresponds to that is colour. 
+The central idea of `tsspiral` is to transform a linear time series into a sequence of annual circular representations. Let \(t\) denote a date and \(y_t\) its associated observation. The number of days in year $X$ is
+
+
+Each annual ring is divided into \(D_Y\) equal angular segments, where \(D_Y\) represents the number of days in calendar year \(Y\). Thus, a common year is divided into 365 segments, whereas a leap year is divided into 366 segments. Each segment corresponds to one calendar day.
+
+Let \(d_t\) denote the day of the year corresponding to date \(t\), and let \(Y(t)\) denote its calendar year. The angular coordinate of observation \(t\) is defined as
+
+$$
+\theta_t =
+\frac{\pi}{2}-
+\frac{2\pi(d_t-1)}{D_{Y(t)}}.
+$$
+
+This definition places January 1 at the top of each annual ring, with subsequent days progressing clockwise. The angular width of each segment is therefore
+
+$$
+\Delta\theta_Y = \frac{2\pi}{D_Y}.
+$$
+
+Consequently, each annual ring completes exactly one full revolution, while preserving the calendar structure of common and leap years.
+
+
+$$
+D_X =
+\begin{cases}
+366, & \text{if }X\text{ is a leap year},\\
+365, & \text{otherwise}.
+\end{cases}
+$$
+
+
+We devided each ring corresponds to each year into $D_X$ number of splits. The angular coordinate is defined as
+$$
+\theta_t =
+\frac{\pi}{2}-
+\frac{2\pi(d_t-1)}{D_{Y(t)}}.
+$$
+
+This convention places January 1 at the top of the circle and advances clockwise throughout the year. Consequently, each annual ring completes exactly one revolution, with the angular resolution determined by the actual length of that calendar year.
+
+The radial coordinate identifies the year and can be expressed as
+\[
+r_t = r_0 + k\Delta r,
+\]
+<!--Each circle is split in to 365. For a leap year circle is divided in to ,,segments. When visualising quarterly data all dates corresponds to that is colour. -->
+
 
 `tsspiral` introduces a new set of `ggplot2` geoms that integrate seamlessly with the `ggplot2` grammar of graphics to create spiral time series plots. This design allows users to generate spiral visualisations within familiar R plotting workflows while retaining the flexibility and composability of `ggplot2`.
 
