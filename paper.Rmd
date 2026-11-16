@@ -25,7 +25,7 @@ journal: JOSS
 
 # Summary
 
- `tsspiral` is an open-source R software for visualising time series on a polar coordinate. We introduce a circular representation of time series data, which we define as a spiral.  `tsspiral` provides a collection of `ggplot2` geometries for creating spiral representation of time series data. In our approach observations are aaranged around a circles to highlight periodicity, seasonality, and recurring temporal patterns. Furthermore, each year is represented using a circle with the anugular position corresponding to the day of the year and successive years represented by concentric rings. By bringing polar-coordinate-based visualisation into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
+ `tsspiral` is an open-source R software for visualising time series on a polar coordinate. We introduce a circular representation of time series data, which we define as a spiral.  `tsspiral` provides a collection of `ggplot2` geometries for creating spiral representation of time series data. In our approach observations are aaranged around a circles to highlight periodicity, seasonality, and recurring temporal patterns. Furthermore, each year is represented using a circle with the anugular position corresponding to the day of the year and successive years represented by concentric rings. The package also facilitates temporal hierachcical visualizations to compare patterns at different time scales. By bringing polar-coordinate-based visualisation into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
 
 
 
@@ -94,6 +94,7 @@ r_0+k\Delta r,\,
 \frac{2\pi d_t}{D_X}
 \right).
 $$
+Figure 1 shows the graphical representation of the construction of spiral plots using the tsspiral package.
 
 <!--Each circle is split in to 365. For a leap year circle is divided in to ,,segments. When visualising quarterly data all dates corresponds to that is colour. -->
 
@@ -104,6 +105,21 @@ library(knitr)
 knitr::include_graphics("figures/figure1.png")
 ```
 
+The package provides three principal geometries. They are listed as follows: 
+
+i. Spiral time series geometry (`geom_tsspiral()`): The primary geometry transforms time series observations into a spiral layout. Each year is represented by a separate ring, and observations are positioned according to their temporal locations. The geometry supports visualising daily, weekly, monthly, quarterly and annual observations. For lower-frequency observations, the corresponding temporal intervals are expanded to daily positions, allowing observations to occupy the appropriate calendar regions. For example in the case of monthly data, January value is represented by colouring the segements corresponds to January 1 to January 31 using the monthly value for January. The `ring_spacing` argument controls the separation between annual rings. Calendar labels are displayed around the outermost ring, with labels selected according to the detected temporal frequency.
+
+ii. Spiral bar geometry (`geom_tsspiralbar()`): This geometry represents time series observations using bars instead of colouring the segment according to its value. The angular position identifies the temporal location, while the radial extent of each bar represents the magnitude of the corresponding observation. This representation is useful when comparing the magnitude and seasonal distribution of observations across multiple years.
+
+iii. Missing value representation geometry (`geom_tsspiralmiss()`): The missing segments of the time series are represented by colouring the missing segment using black colour. It enables users to identify periods of incomplete data collection and examine whether missingness is concentrated within particular calendar periods or years.
+
+In addition to these geometries, tsspiral provides two further functions:
+
+- `temporal_hierarchical()`: represents daily, weekly, monthly, quarterly and annual summaries using aligned concentric rings. This enables the examination of temporal hierarchical patterns at multiple resolutions within a common coordinate system.
+
+- `calendar_hourly_polar()`: creates a monthly calendar in which each day contains a 24-hour polar bar chart, allowing intraday patterns to be examined while retaining calendar context.
+
+Together, these functionalities provide a collection of complementary approaches for exploring temporal structures at different resolutions.
 
 # Research impact statement
 
