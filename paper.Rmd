@@ -6,7 +6,8 @@ tags:
   - forecasting
   - daily series
   - visulisation
-  - Seasonal patterns
+  - seasonal patterns
+  - polar coordinates
 authors:
   - name: Thiyanga S. Talagala
     orcid: 0000-0002-0656-9789
@@ -25,9 +26,7 @@ journal: JOSS
 
 # Summary
 
- `tsspiral` is an open-source R software for visualizing time series on a polar coordinate. We introduce a circular representation of time series data, which we define as a spiral.  `tsspiral` provides a collection of `ggplot2` geometries for creating spiral representation of time series data. In our approach observations are arranged around a circles to highlight periodicity, seasonality, and recurring temporal patterns. Furthermore, each year is represented using a circle with the angular position corresponding to the day of the year and successive years represented by concentric rings. The package also facilitates temporal hierarchical visualizations to compare patterns at different time scales. By bringing polar-coordinate-based visualization into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
-
-
+ `tsspiral` is open-source R software for visualising time series in polar coordinates. We introduce a circular representation of time series data, which we define as a spiral.  `tsspiral` provides a collection of `ggplot2` geometries for creating a spiral representation of time series data. In our approach, we arrange observations around a circle to highlight periodicity, seasonality, and recurring temporal patterns. Each year is represented by a circle, with the angular position corresponding to the day of the year, and successive years appear as concentric rings. The package also supports temporal hierarchical visualisations to compare patterns across time scales. By bringing polar-coordinate-based visualisation into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
 
 # Statement of need
 

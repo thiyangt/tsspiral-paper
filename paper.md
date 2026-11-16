@@ -6,7 +6,8 @@ tags:
   - forecasting
   - daily series
   - visulisation
-  - Seasonal patterns
+  - seasonal patterns
+  - polar coordinates
 authors:
   - name: Thiyanga S. Talagala
     orcid: 0000-0002-0656-9789
