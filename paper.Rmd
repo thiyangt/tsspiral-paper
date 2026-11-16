@@ -25,14 +25,13 @@ journal: JOSS
 
 # Summary
 
-tsspiral is an open-source R software for visualising time series on a polar coordinate. `tsspiral` provides a collection of `ggplot2` geometries for creating circular representation of time series data. In these plots each year is represented using a circle with the anugular position corresponding to the day of the year and successive years represented by concentric rings. By bringing polar-coordinate-based visualisation into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
-
+ `tsspiral` is an open-source R software for visualising time series on a polar coordinate. We introduce a circular representation of time series data, which we define as a spiral.  `tsspiral` provides a collection of `ggplot2` geometries for creating spiral representation of time series data. In our approach observations are aaranged around a circles to highlight periodicity, seasonality, and recurring temporal patterns. Furthermore, each year is represented using a circle with the anugular position corresponding to the day of the year and successive years represented by concentric rings. By bringing polar-coordinate-based visualisation into routine time series analysis, `tsspiral` offers a practical tool for exploring temporal patterns and communicating complex time-dependent structures.
 
 
 
 # Statement of need
 
-Time series data are commonly visualised using Cartesian coordinate plane, where time is represented along the horizontal axis ($x$) and observed values along the verticle axis ($y$). Although conventional time series plots are effective for identifying important temporal features, such as trends, seasonal patterns, sudden shifts and irregular fluctuations, identifying these features can become challenging when dealing with long time series, particularly daily observations spanning several years or decades. As the length of the series increases, the visual representation becomes increasingly dense, making it difficult to recognise recurring patterns, compare corresponding periods across years and identify changes in seasonal behaviour. 
+Time series visualization is an essential step in time series analysis, forecasting, imputation, anomaly dection etc. Time series data are commonly visualised using Cartesian coordinate plane, where time is represented along the horizontal axis ($x$) and observed values along the verticle axis ($y$). Although conventional time series plots are effective for identifying important temporal features, such as trends, seasonal patterns, sudden shifts and irregular fluctuations, identifying these features can become challenging when dealing with long time series, particularly daily observations spanning several years or decades. As the length of the series increases, the visual representation becomes increasingly dense, making it difficult to recognise recurring patterns, compare corresponding periods across years and identify changes in seasonal behaviour. 
 
 
 Circular representation of time series provide an alternative visualisation in which time series is mapped to angular position and successive years are arranged as concentric rings. This representation facilitates the visual comparison of corresponding time periods across years, making recurrent patterns, unusual events, temporal changes, and data missing gaps easier to explore. Furthermore, with conventional time series plots it is very difficult to nested temporal structures, compare seasonal patterns across different levels of the temporal hierachcy.  Spiral version of time series plot are useful in addressing these limitations. In addition, visualizing categorical time series data can be challenging using traditional time series plots.
@@ -44,25 +43,16 @@ periodic patterns [@spiralize].
 
 
  Since most statistical software packages readily support line plots, their convenience and widespread availability have made line plots the conventional choice for visualising time series. As a result, other forms of visualisation have received comparatively less attention, despite their potential to reveal recurring and circular patterns in time series data.  Furthermore, creating spiral time series plot often requires custom codes and careful handing of time series data. 
-`tsspiral` fills this gaps. 
-
+`tsspiral` fills this gaps.
 
 # State of the field
 
+@carlis1998interactive is one of the early contribution which introduce arrange data in a spiral. The authors mentioned spirals  provides
+the user with easy visual cues to both serial and periodic
+aspects of the data. @weber2001visualizing proposes spiral graphs for visualising large time-series datasets and identifying periodic structures. It also discusses visualising nominal and quantitative data. The R package `spiralize`[@spiralize] provides tools for visualising time series data using spiral layouts. Our package introduces a new set of geoms that integrate with ggplot2, extending the grammar of graphics to spiral-based visualisation. This integration allows users to construct spiral plots using a familiar and flexible syntax while retaining the layered approach to data visualisation that makes ggplot2 powerful. Rather than treating spiral plots as standalone graphics, our approach brings them into the grammar of graphics framework, enabling users to explore temporal patterns through a broader range of visual encodings. 
 
 
-The R package `spiralize`[@spiralize] provides tools for visualising time series data using spiral layouts. Building on this idea, our package introduces a new set of geoms that integrate with ggplot2, extending the grammar of graphics to spiral-based visualisation. This integration allows users to construct spiral plots using a familiar and flexible syntax while retaining the layered approach to data visualisation that makes ggplot2 powerful. Rather than treating spiral plots as standalone graphics, our approach brings them into the grammar of graphics framework, enabling users to explore temporal patterns through a broader range of visual encodings. The R package `spiralize` provides tools for visualising data using spiral layouts. In our approach, we introduce a circular representation of time series data, which we define as a spiral: our approach represents time series data using circular layouts, arranging observations around circles to highlight periodicity, seasonality, and recurring temporal patterns. 
 
-What has been missing is a reusable tool for creating spiral visualisations of time series data that supports the exploration of temporal patterns across multiple time scales. Compared with conventional time series plotting tools, `tsspiral` adds:
-
-- Spiral visualisations of time series using polar coordinates.
-- Alternative representations of temporal patterns, making recurring cycles and seasonal variations easier to explore.
-- A framework for visualising temporal hierarchies, from annual and quarterly patterns to monthly, weekly, and daily observations.
-- New 
-- An open-source implementation in R that supports reproducible visualisation workflows.
-- A flexible approach that can be incorporated into statistical analysis, research communication, and teaching.
-
-@rakuschek2026guided pointed out circular version of time series plots has both advantage and disadvantages. Hence @rakuschek2026guided suggested to use both line and circular version of the plots to get a better idea of the data rather than using circular plots as a replacement to line plots. 
 
 
 # Software design

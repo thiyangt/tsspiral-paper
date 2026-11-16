@@ -196,3 +196,7 @@ calendar_hourly_polar(
   month = "2026-04-01"
 )
 ```
+
+
+#####
+@rakuschek2026guided pointed out circular version of time series plots has both advantage and disadvantages. Hence @rakuschek2026guided suggested to use both line and circular version of the plots to get a better idea of the data rather than using circular plots as a replacement to line plots. 
