@@ -47,14 +47,15 @@ periodic patterns [@spiralize].
 
 # State of the field
 
-@carlis1998interactive is one of the early contribution which introduce arrange data in a spiral. The authors mentioned spirals  provides
+@carlis1998interactive is one of the early contributions that introduced arranging data in a spiral. The authors mentioned that spirals provide
 the user with easy visual cues to both serial and periodic
-aspects of the data. @weber2001visualizing proposes spiral graphs for visualizing large time-series data sets and identifying periodic structures. It also discusses visualizing nominal and quantitative data. The R package `spiralize`[@spiralize] provides tools for visualizing time series data using spiral layouts. Our package introduces a new set of geoms that integrate with ggplot2, extending the grammar of graphics to spiral-based visualization. This integration allows users to construct spiral plots using a familiar and flexible syntax while retaining the layered approach to data visualization that makes ggplot2 powerful. Rather than treating spiral plots as standalone graphics, our approach brings them into the grammar of graphics framework, enabling users to explore temporal patterns through a broader range of visual encodings. 
+aspects of the data. @weber2001visualizing proposes spiral graphs for visualizing large time-series data sets and identifying periodic structures. It also discusses visualizing nominal and quantitative data. The R package `spiralize`[@spiralize] provides tools for visualizing time series data using spiral layouts. Our package introduces a new set of geoms that integrate with `ggplot2` [@ggplot2], extending the grammar of graphics to spiral-based visualization. This integration lets users build spiral plots with a familiar, flexible syntax while retaining the layered approach to data visualisation that makes `ggplot2` powerful. Rather than treating spiral plots as standalone graphics, our approach brings them into the grammar of graphics framework, enabling users to explore temporal patterns through a broader range of visual encodings. 
 
 
 # Software design
 
-The central idea of `tsspiral` is to transform a linear time series into a sequence of annual circular representations. Each year occupies a separate ring. Each year is divided into 365 segments, whereas a leap year is divided into 366 segments. Successive years represented by concentric rings. The angular coordinate represents the position of an observation within its corresponding calendar year. 
+The central idea of `tsspiral` is to transform a linear time series into a sequence of annual circular representations. Each year occupies a separate ring. Each year has 365 segments, while a leap year has 366. Concentric rings represent successive years. The angular coordinate represents an observation's position within its corresponding calendar year. 
+
 
 Let \(t\) denote a date and \(y_t\) its associated observation. The number of days in year $X$ is defined as 
 
@@ -101,7 +102,7 @@ Figure 1  shows the graphical representation of the construction of spiral plots
 ```{r , echo=FALSE}
 #| label: fig-f1
 #| out.width: "100%"
-#| fig.cap: "Graphical representation of the construction of spiral plots using the tsspiral package. Each year is represented by a circular ring, with the angular position corresponding to the day of the year. Successive years are arranged as concentric rings, allowing temporal patterns to be examined across years."
+#| fig.cap: "Graphical representation of the construction of spiral plots using the tsspiral package. Each year is represented by a circular ring, with the angular position corresponding to the day of the year. Successive years are arranged as concentric rings, allowing examination of temporal patterns across years."
 library(knitr)
 knitr::include_graphics("figures/figure1.png")
 ```
