@@ -1,10 +1,4 @@
 ---
-title: "tsspiral: An R Package to Create Circular Version of Time Series Plots"
-author: Thiyanga S. Talagala \newline
-  Department of Statistics<br>
-  Faculty of Applied Sciences<br>
-  University of Sri Jayewardenepura<br>
-  Sri Lanka
 format:
   pdf:
     documentclass: article
@@ -26,6 +20,15 @@ execute:
   message: false
 ---
 
+
+
+\begin{center}
+{\LARGE \textbf{tsspiral: An R Package to Create Circular Versions of Time Series Plots}}\\
+Thiyanga S. Talagala \\
+Department of Statistics, Faculty of Applied Sciences, \\
+University of Sri Jayewardenepura, Sri Lanka \\
+ttalagala@sjp.ac.lk
+\end{center}
 
 # Abstract {-}
 
@@ -104,8 +107,139 @@ Figure 1  shows the graphical representation of the construction of spiral plots
 #| label: fig-f1
 #| out.width: "100%"
 #| fig.cap: "Graphical representation of the construction of spiral plots using the tsspiral package. Each year is represented by a circular ring, with the angular position corresponding to the day of the year. Successive years are arranged as concentric rings, allowing examination of temporal patterns across years."
-library(knitr)
-knitr::include_graphics("figures/figure1.png")
+
+# Three annual rings with January of one year split into 31 daily segments
+# Needs only ggplot2.
+
+library(ggplot2)
+
+# ---- calendar helpers -------------------------------------------------------
+is_leap  <- function(y) (y %% 4 == 0 & y %% 100 != 0) | (y %% 400 == 0)
+days_in  <- function(y) ifelse(is_leap(y), 366, 365)
+
+# angular position: Jan 1 at the top, days advance clockwise
+#   theta = pi/2 - 2*pi*(d - 1) / D_Y
+# d may be fractional so arcs can be sampled smoothly
+polar <- function(r, d, D, cx = 0, cy = 0) {
+  theta <- pi / 2 - 2 * pi * (d - 1) / D
+  data.frame(x = cx + r * cos(theta), y = cy + r * sin(theta))
+}
+
+# ---- settings ---------------------------------------------------------------
+years    <- c(2022, 2023, 2024)
+r0       <- 60          # radius of the first ring
+dr       <- 50          # radial step between years: r_t = r0 + k * dr
+zoom_yr  <- 2023        # year whose January is enlarged
+band_in  <- 98          # January band radii on the zoom_yr ring
+band_out <- 122
+
+ring_r   <- r0 + (seq_along(years) - 1) * dr
+ring_lab <- sprintf("%d  (k = %d, %d days)", years, seq_along(years) - 1, days_in(years))
+
+# ---- ring outlines ----------------------------------------------------------
+rings <- do.call(rbind, lapply(seq_along(years), function(i) {
+  D <- days_in(years[i])
+  p <- polar(ring_r[i], seq(1, D + 1, length.out = 400), D)
+  p$ring <- ring_lab[i]
+  p
+}))
+
+# ---- month ticks on every ring ---------------------------------------------
+ticks <- do.call(rbind, lapply(seq_along(years), function(i) {
+  y <- years[i]; D <- days_in(y)
+  doy <- as.integer(format(as.Date(sprintf("%d-%02d-01", y, 1:12)), "%j"))
+  a <- polar(ring_r[i] - 5, doy, D)
+  b <- polar(ring_r[i] + 5, doy, D)
+  data.frame(x = a$x, y = a$y, xend = b$x, yend = b$y, ring = ring_lab[i])
+}))
+
+# ---- month labels (outside the outer ring) ---------------------------------
+mid   <- c(31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31)
+start <- cumsum(c(1, mid[-12]))
+mlab  <- cbind(polar(max(ring_r) + 18, start + mid / 2, 365),
+               label = month.abb)
+
+# ---- January split into 31 daily segments on the zoom_yr ring --------------
+Dz <- days_in(zoom_yr)
+
+sector <- function(i, make_pt, n = 12) {
+  t <- seq(i, i + 1, length.out = n)
+  rbind(make_pt(t, "out"), make_pt(rev(t), "in"))
+}
+
+jan_band <- do.call(rbind, lapply(1:31, function(i) {
+  pt <- function(t, side) polar(if (side == "out") band_out else band_in, t, Dz)
+  s <- sector(i, pt)
+  s$day <- i
+  s$shade <- if (i %% 2 == 1) "a" else "b"
+  s
+}))
+
+# ---- enlarged strip (same 31 segments, magnified) --------------------------
+R_in  <- 380; R_out <- 420
+zx    <- -40;  zy <- -35                 # centre of the magnifying arc
+dth   <- 2 * pi / Dz
+half  <- 31 * dth / 2
+zpt <- function(i, R) {                   # i = 0..31 boundaries, Jan 1 at the top
+  a <- half - i * dth
+  data.frame(x = zx + R * cos(a), y = zy + R * sin(a))
+}
+
+jan_zoom <- do.call(rbind, lapply(1:31, function(i) {
+  pt <- function(t, side) zpt(t - 1, if (side == "out") R_out else R_in)
+  s <- sector(i, pt)
+  s$day <- i
+  s$shade <- if (i %% 2 == 1) "a" else "b"
+  s
+}))
+
+zlab_days <- c(1, 5, 10, 15, 20, 25, 31)
+zlab <- do.call(rbind, lapply(zlab_days, function(d) {
+  p <- zpt(d - 0.5, R_out + 8)
+  data.frame(x = p$x, y = p$y, label = paste("Jan", d))
+}))
+
+# dashed leaders from the band to the strip
+p_start <- polar(band_out, 1,  Dz); p_end <- polar(band_out, 32, Dz)
+z_start <- zpt(0,  R_in);           z_end <- zpt(31, R_in)
+leaders <- data.frame(x    = c(p_start$x, p_end$x),
+                      y    = c(p_start$y, p_end$y),
+                      xend = c(z_start$x, z_end$x),
+                      yend = c(z_start$y, z_end$y))
+
+# ---- plot ------------------------------------------------------------------
+cols <- setNames(c("#1b9e77", "#d95f02", "#7570b3"), ring_lab)
+
+p <- ggplot() +
+  # rings and month ticks
+  geom_path(data = rings, aes(x, y, colour = ring), linewidth = 0.9) +
+  geom_segment(data = ticks, aes(x = x, y = y, xend = xend, yend = yend, colour = ring),
+               linewidth = 0.4, show.legend = FALSE) +
+  # January 31-segment band on the 2023 ring
+  geom_polygon(data = jan_band, aes(x, y, group = day, alpha = shade),
+               fill = "#BA7517", show.legend = FALSE) +
+  # enlarged strip
+  geom_polygon(data = jan_zoom, aes(x, y, group = day, alpha = shade),
+               fill = "#BA7517", show.legend = FALSE) +
+  scale_alpha_manual(values = c(a = 0.30, b = 0.70)) +
+  geom_segment(data = leaders, aes(x = x, y = y, xend = xend, yend = yend),
+               linetype = "dashed", linewidth = 0.3, colour = "grey40") +
+  # 1 Jan axis
+  geom_segment(aes(x = 0, y = 0, xend = 0, yend = max(ring_r) + 10),
+               linetype = "dashed", linewidth = 0.3, colour = "grey40") +
+  annotate("text", x = 0, y = max(ring_r) + 40, label = "1 Jan", size = 3.3) +
+  # labels
+  geom_text(data = mlab, aes(x, y, label = label), size = 3, colour = "grey30") +
+  geom_text(data = zlab, aes(x, y, label = label), size = 3, hjust = 0) +
+  annotate("text", x = 270, y = 0, label = paste("Jan", zoom_yr), fontface = "bold", size = 3.5) +
+  annotate("text", x = 270, y = -14, label = "31 segments", size = 3) +
+  scale_colour_manual(values = cols, name = NULL) +
+  coord_fixed(xlim = c(-190, 480)) +
+  theme_void() +
+  theme(legend.position = "inside",            # needs ggplot2 >= 3.5.0
+        legend.position.inside = c(0.84, 0.92),
+        legend.text = element_text(size = 9))
+p
 ```
 
 The package provides three main geometries. They are listed as follows: 
@@ -133,14 +267,147 @@ vii) . How do recurring seasonal patterns differ across years—for example, bet
 
 ```{r , echo=FALSE}
 #| out.width: "100%"
-#| out.height: "80%"
+#| out.height: "50%"
 #| fig.cap: "Illustration example using Sri Lanka daily tourist arrival data. (a) time series plot using geom\_point, (b) spiral version of plot representing numeric values, (c) spiral version of the plot representing categorical values. Every year tourist mostly arrive in July- August and from December to January of the next year."
 knitr::include_graphics("figures/figure2.png")
 ```
 
 
-```{r}
 
+```{r}
+#| out.width: "90%"
+#| out.height: "50%"
+#| fig.cap: "Illustration example representing Sri Lanka daily tourist arrival data using geom\_tsspiralbar. The outer circle bar  height being greater than the inner circle bars indicates the upward trend in the series. Furthermore, we can clearly see that December each year records the highest number of arrivals compared to other months. There is a significant upward trend in 2024 compared to 2023."
+library(readr)
+library(tsspiral)
+library(viridis)
+library(ggplot2)
+library(tsibble)
+library(tidyverse)
+library(patchwork)
+
+data(tourism.srilanka)
+ts <- tourism.srilanka |>
+  mutate(Date = dmy(Date)) |>        
+  as_tsibble(index = Date)
+p1 <- ggplot(ts, aes(x=Date, y=Value)) + geom_line() + ggtitle("(a) ggplot2: geom_line")
+
+ggplot(
+  ts,
+  aes(
+    x = Date,
+    y = Value,
+    fill = Value
+  )
+) +
+  geom_tsspiralbar(
+    ring_spacing = 1
+  ) +
+  scale_fill_viridis_c(
+    option = "inferno",
+    direction = -1,
+    guide = guide_colorbar(reverse = FALSE)
+  ) +
+  theme_void() + ggtitle("tsspiral: geom_tsspiralbar")
+
+```
+
+Figure 3 shows the daily tourist arrivals to Sri Lanka using the `geom_tsspiralbar`. The bar height and colour are coded according to the observed values. The outer circle bar  height being greater than the inner circle bars indicates the upward trend in the series. Furthermore, we can clearly see that December each year records the highest number of arrivals compared to other months. There is a significant upward trend in 2024 compared to 2023.
+
+The temporal_hierarchical() function can be used to visualise temporal patterns at different levels of temporal aggregation. Users can specify an aggregation function through the fun argument, providing flexibility in how observations are summarised. For example, max can be used to display the maximum value, mean to represent the average value, and sum to show the total value within each temporal aggregation period. This flexibility allows users to explore different aspects of the data and identify temporal patterns according to their analytical objectives. Figure 4 represents temporal hierarchical visualisation of the 2023 daily tourist arrivals to Sri Lanka  using the maximum value as the aggregation function. The maximum occurs in the fourth quarter, in December, and corresponds to the last weeks of the year.
+
+```{r}
+#| out.width: "130%"
+#| out.height: "50%"
+#| fig.cap: "Temporal hierarchical visualisation of 2023 daily tourist arrivals to Sri Lanka, using the maximum value as the aggregation function. The maximum occurs in the fourth quarter, in December, and corresponds to the last weeks of the year."
+library(patchwork)
+ts2023 <- ts |> 
+  filter(lubridate::year(Date) < 2024)
+a1 <- temporal_hierarchical(
+  data = ts2023,
+  date = Date,
+  fun = max,
+  value = Value
+) 
+
+a1
+#ts2024 <- ts |> 
+#  filter(lubridate::year(Date) > 2023 & #lubridate::year(Date) < 2025)
+#a1
+#a2 <- temporal_hierarchical(
+# data = ts2024,
+# date = Date,
+# value = Value) + ggtitle("2023")
+#ts2025 <- ts |> 
+#  filter(lubridate::year(Date) > 2024 )
+#a3 <- temporal_hierarchical(
+# data = ts2025,
+# date = Date,
+# value = Value) + ggtitle("2025")
+# a1/a2/a3
+```
+
+Figure 5 illustrates the `geom_tsspiralmiss` function in the package. To demonstrate its functionality, we deliberately remove selected rows from the original dataset, creating gaps in the time series. The resulting visualisation highlights missing time points and demonstrates how `geom_tsspiralmiss` represents gaps in temporal coverage.
+
+```{r}
+#| out.width: "90%"
+#| out.height: "60%"
+#| fig.cap: "An illustrative example `geom_tsspiralmiss` function in the package. The missing data sections are denoted in black."
+
+ts_missing <- ts |>
+  slice(-c(10:12, 100:120, 1000:1020))
+ggplot(
+  ts_missing,
+  aes(x = Date)
+) +
+  geom_tsspiralmiss(
+    ring_spacing = 2,
+    observed_colour = "grey85",
+    missing_colour = "black"
+  ) +
+  theme_void()
+```
+
+Inspired by the work of @wang2020calendar, we use calendar-based plots to represent hourly time series. Figure 6 illustrates the approach using simulated hourly data. Each panel represents a day, with the spiral plot within each panel showing the distribution of hourly observations throughout that day.
+
+```{r}
+#| out.width: "100%"
+#| out.height: "60%"
+#| fig.cap: "An illustrative example `calendar_hourly_polar` function in the package. "
+# =========================================================
+# Example: Two months of hourly data
+# =========================================================
+
+set.seed(123)
+library(lubridate)
+hourly_data <- tibble::tibble(
+  datetime = seq(
+    from = as.POSIXct("2026-01-01 00:00"),
+    to   = as.POSIXct("2026-02-28 23:00"),
+    by   = "hour"
+  )
+) |>
+  dplyr::mutate(
+    hour = lubridate::hour(datetime),
+    day = lubridate::day(datetime),
+
+    temperature =
+      25 +
+      4 * sin(2 * pi * hour / 24) +
+      0.05 * day +
+      stats::rnorm(
+        length(datetime),
+        0,
+        0.8
+      )
+  )
+# January
+calendar_hourly_polar(
+  hourly_data,
+  datetime,
+  temperature,
+  month = "2026-01-01"
+)
 ```
 
 # Research impact statement
@@ -151,7 +418,7 @@ this allows visualisation of temporal-hierarchical time series. By aggregating t
 reveal recurring seasonal patterns and relationships between different temporal scales. This allows researchers to explore patterns in the time series
 within and across years, quarters, months, or other time intervals. The package `tsspiral` provides one stop shop for visualizing time series series data in circular arrangement. @rakuschek2026guided pointed out that circular time-series plots have both advantages and disadvantages. Hence, @rakuschek2026guided suggested using both line and circular versions of the plots to better understand the data, rather than using circular plots as a replacement for line plots.
 
-# AI usage disclosure
+### AI usage disclosure{-}
 
 The software project presented in this paper accepts contributions that have been created with
 the help of AI tools. ChatGPT

@@ -156,8 +156,6 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same}
 \hypersetup{
-  pdftitle={tsspiral: An R Package to Create Circular Version of Time Series Plots},
-  pdfauthor={Thiyanga S. Talagala Department of Statistics  Faculty of Applied Sciences  University of Sri Jayewardenepura  Sri Lanka},
   colorlinks=true,
   linkcolor={blue},
   filecolor={Maroon},
@@ -166,16 +164,20 @@
   pdfcreator={LaTeX via pandoc}}
 
 
-\title{tsspiral: An R Package to Create Circular Version of Time Series
-Plots}
-\author{Thiyanga S. Talagala \newline Department of Statistics Faculty
-of Applied Sciences University of Sri Jayewardenepura Sri Lanka}
+\author{}
 \date{}
 \begin{document}
-\maketitle
 
 
 \setstretch{1.5}
+\begin{center}
+{\LARGE \textbf{tsspiral: An R Package to Create Circular Versions of Time Series Plots}}\\
+Thiyanga S. Talagala \\
+Department of Statistics, Faculty of Applied Sciences, \\
+University of Sri Jayewardenepura, Sri Lanka \\
+ttalagala@sjp.ac.lk
+\end{center}
+
 \section*{Abstract}\label{abstract}
 \addcontentsline{toc}{section}{Abstract}
 
@@ -331,7 +333,7 @@ spiral plots using the \texttt{tsspiral} package.
 
 \centering{
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{figures/figure1.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{arxiv_files/figure-pdf/fig-f1-1.pdf}
 
 }
 
@@ -423,7 +425,7 @@ operations.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=1\linewidth,height=0.8\textheight]{figures/figure2.png}
+{\centering \includegraphics[width=1\linewidth,height=0.5\textheight]{figures/figure2.png}
 
 }
 
@@ -432,6 +434,90 @@ data. (a) time series plot using geom~point, (b) spiral version of plot
 representing numeric values, (c) spiral version of the plot representing
 categorical values. Every year tourist mostly arrive in July- August and
 from December to January of the next year.}
+
+\end{figure}%
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.5\textheight]{arxiv_files/figure-pdf/unnamed-chunk-2-1.pdf}
+
+}
+
+\caption{Illustration example representing Sri Lanka daily tourist
+arrival data using geom~tsspiralbar. The outer circle bar height being
+greater than the inner circle bars indicates the upward trend in the
+series. Furthermore, we can clearly see that December each year records
+the highest number of arrivals compared to other months. There is a
+significant upward trend in 2024 compared to 2023.}
+
+\end{figure}%
+
+Figure 3 shows the daily tourist arrivals to Sri Lanka using the
+\texttt{geom\_tsspiralbar}. The bar height and colour are coded
+according to the observed values. The outer circle bar height being
+greater than the inner circle bars indicates the upward trend in the
+series. Furthermore, we can clearly see that December each year records
+the highest number of arrivals compared to other months. There is a
+significant upward trend in 2024 compared to 2023.
+
+The temporal\_hierarchical() function can be used to visualise temporal
+patterns at different levels of temporal aggregation. Users can specify
+an aggregation function through the fun argument, providing flexibility
+in how observations are summarised. For example, max can be used to
+display the maximum value, mean to represent the average value, and sum
+to show the total value within each temporal aggregation period. This
+flexibility allows users to explore different aspects of the data and
+identify temporal patterns according to their analytical objectives.
+Figure 4 represents temporal hierarchical visualisation of the 2023
+daily tourist arrivals to Sri Lanka using the maximum value as the
+aggregation function. The maximum occurs in the fourth quarter, in
+December, and corresponds to the last weeks of the year.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1.3\linewidth,height=0.5\textheight]{arxiv_files/figure-pdf/unnamed-chunk-3-1.pdf}
+
+}
+
+\caption{Temporal hierarchical visualisation of 2023 daily tourist
+arrivals to Sri Lanka, using the maximum value as the aggregation
+function. The maximum occurs in the fourth quarter, in December, and
+corresponds to the last weeks of the year.}
+
+\end{figure}%
+
+Figure 5 illustrates the \texttt{geom\_tsspiralmiss} function in the
+package. To demonstrate its functionality, we deliberately remove
+selected rows from the original dataset, creating gaps in the time
+series. The resulting visualisation highlights missing time points and
+demonstrates how \texttt{geom\_tsspiralmiss} represents gaps in temporal
+coverage.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,height=0.6\textheight]{arxiv_files/figure-pdf/unnamed-chunk-4-1.pdf}
+
+}
+
+\caption{An illustrative example \texttt{geom\_tsspiralmiss} function in
+the package. The missing data sections are denoted in black.}
+
+\end{figure}%
+
+Inspired by the work of \textcite{wang2020calendar}, we use
+calendar-based plots to represent hourly time series. Figure 6
+illustrates the approach using simulated hourly data. Each panel
+represents a day, with the spiral plot within each panel showing the
+distribution of hourly observations throughout that day.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=1\linewidth,height=0.6\textheight]{arxiv_files/figure-pdf/unnamed-chunk-5-1.pdf}
+
+}
+
+\caption{An illustrative example \texttt{calendar\_hourly\_polar}
+function in the package.}
 
 \end{figure}%
 
@@ -455,7 +541,8 @@ plots have both advantages and disadvantages. Hence,
 versions of the plots to better understand the data, rather than using
 circular plots as a replacement for line plots.
 
-\section{AI usage disclosure}\label{ai-usage-disclosure}
+\subsubsection*{AI usage disclosure}\label{ai-usage-disclosure}
+\addcontentsline{toc}{subsubsection}{AI usage disclosure}
 
 The software project presented in this paper accepts contributions that
 have been created with the help of AI tools. ChatGPT was used to assist
