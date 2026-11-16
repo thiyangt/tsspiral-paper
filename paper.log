@@ -1,15 +1,15 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.10.28)  15 NOV 2026 20:08
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.11.15)  15 NOV 2026 20:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **paper.tex
 (./paper.tex
-LaTeX2e <2026-06-01>
+LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+Document Class: article 2026-06-04 v1.4n Standard LaTeX document class
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/base/size10.clo
-File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
+File: size10.clo 2026-06-04 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count273
 \c@section=\count274
@@ -26,9 +26,9 @@ File: size10.clo 2025/01/22 v1.4n Standard LaTeX file (size option)
 Package: marginnote 2026-06-15 1.5 non floating margin notes for LaTeX 
 \c@mn@abspage=\count281
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2026-05-17 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2026-06-26 v1.2e Enhanced LaTeX Graphics (DPC,SPQR)
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2026-05-17 v1.15 key=value parser (DPC)
+Package: keyval 2026-06-01 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2026-05-17 v1.4h Standard LaTeX Graphics (DPC,SPQR)
@@ -273,7 +273,7 @@ File: pgfmodulematrix.code.tex 2026-08-01 v3.1.12 (3.1.12)
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2026-08-01 v3.1.12 (3.1.12)
 ))) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2026-10-09 v7.01s Hypertext links for LaTeX
+Package: hyperref 2026-11-03 v7.01t Hypertext links for LaTeX
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2024/12/12 v1.0g TeX engine tests
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
@@ -285,7 +285,7 @@ Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package: pdftexcmds 2026-10-28 v0.34 Utility functions of pdfTeX for LuaTeX (HO)
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
@@ -294,8 +294,8 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode not found.
 )) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hyperref/nameref.sty
-Package: nameref 2026-01-29 v2.58 Cross-referencing by name of section
+) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/nameref/nameref.sty
+Package: nameref 2026-11-03 v2.60 Cross-referencing by name of section
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
@@ -311,13 +311,13 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 \Hy@linkcounter=\count312
 \Hy@pagecounter=\count313
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2026-10-09 v7.01s Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2026-11-03 v7.01t Hyperref: PDFDocEncoding definition (HO)
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 )
 \Hy@SavedSpaceFactor=\count314
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
-File: puenc.def 2026-10-09 v7.01s Hyperref: PDF Unicode definition (HO)
+File: puenc.def 2026-11-03 v7.01t Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Hyper figures OFF on input line 4199.
 Package hyperref Info: Link nesting OFF on input line 4204.
@@ -354,7 +354,7 @@ Package hyperref Info: PDF/A mode OFF on input line 6121.
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
-File: hxetex.def 2026-10-09 v7.01s Hyperref driver for XeTeX
+File: hxetex.def 2026-11-03 v7.01t Hyperref driver for XeTeX
 \pdfm@box=\box65
 \c@Hy@AnnotLevel=\count320
 \HyField@AnnotCount=\count321
@@ -391,7 +391,7 @@ Package caption Info: hyperref package is loaded.
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2026/05/28 version 6.10.0 text color boxes
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2024-01-22 v1.5x LaTeX2e package for verbatim enhancements
+Package: verbatim 2026-08-17 v1.5z LaTeX2e package for verbatim enhancements
 \every@verbatim=\toks31
 \verbatim@line=\toks32
 \verbatim@in@stream=\read3
@@ -426,11 +426,11 @@ LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2026/05/19 v2.18d AMS math features
+Package: amsmath 2026-08-26 v2.18e AMS math features
 \@mathmargin=\skip59
 For additional information on amsmath, use the `?' option.
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2024/11/17 v2.01 AMS text
+Package: amstext 2026/06/26 v2.01 AMS text
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks35
@@ -445,28 +445,28 @@ Package: amsopn 2022/04/08 v2.04 operator names
 LaTeX Info: Redefining \frac on input line 233.
 \uproot@=\count330
 \leftroot@=\count331
-LaTeX Info: Redefining \overline on input line 398.
-LaTeX Info: Redefining \colon on input line 409.
+LaTeX Info: Redefining \overline on input line 370.
+LaTeX Info: Redefining \colon on input line 381.
 \classnum@=\count332
 \DOTSCASE@=\count333
-LaTeX Info: Redefining \ldots on input line 495.
-LaTeX Info: Redefining \dots on input line 498.
-LaTeX Info: Redefining \cdots on input line 619.
+LaTeX Info: Redefining \ldots on input line 467.
+LaTeX Info: Redefining \dots on input line 470.
+LaTeX Info: Redefining \cdots on input line 591.
 \Mathstrutbox@=\box75
 \strutbox@=\box76
-LaTeX Info: Redefining \big on input line 721.
-LaTeX Info: Redefining \Big on input line 722.
-LaTeX Info: Redefining \bigg on input line 723.
-LaTeX Info: Redefining \Bigg on input line 724.
+LaTeX Info: Redefining \big on input line 693.
+LaTeX Info: Redefining \Big on input line 694.
+LaTeX Info: Redefining \bigg on input line 695.
+LaTeX Info: Redefining \Bigg on input line 696.
 \big@size=\dimen281
-LaTeX Font Info:    Redeclaring font encoding OML on input line 742.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 743.
+LaTeX Font Info:    Redeclaring font encoding OML on input line 714.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 715.
 \macc@depth=\count334
-LaTeX Info: Redefining \bmod on input line 904.
-LaTeX Info: Redefining \pmod on input line 909.
-LaTeX Info: Redefining \smash on input line 939.
-LaTeX Info: Redefining \relbar on input line 969.
-LaTeX Info: Redefining \Relbar on input line 970.
+LaTeX Info: Redefining \bmod on input line 876.
+LaTeX Info: Redefining \pmod on input line 881.
+LaTeX Info: Redefining \smash on input line 911.
+LaTeX Info: Redefining \relbar on input line 941.
+LaTeX Info: Redefining \Relbar on input line 942.
 \c@MaxMatrixCols=\count335
 \dotsspace@=\muskip18
 \c@parentequation=\count336
@@ -486,8 +486,8 @@ LaTeX Info: Redefining \Relbar on input line 970.
 \multlinegap=\skip60
 \multlinetaggap=\skip61
 \mathdisplay@stack=\toks39
-LaTeX Info: Redefining \[ on input line 2965.
-LaTeX Info: Redefining \] on input line 2966.
+LaTeX Info: Redefining \[ on input line 2937.
+LaTeX Info: Redefining \] on input line 2938.
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifluatex.sty
@@ -511,7 +511,7 @@ Package: logreq 2010/08/04 v1.0 xml request logger
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 )) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2024/03/16 v1.1e Standard LaTeX ifthen package (DPC)
+Package: ifthen 2026-06-01 v1.1e Standard LaTeX ifthen package (DPC)
 )
 \c@tabx@nest=\count342
 \c@listtotal=\count343
@@ -737,7 +737,7 @@ Package: xparse 2025-10-09 L3 Experimental document command parser
 )
 Package: blx-case-expl3 2026/09/24 v3.22a expl3 case changing code for biblatex
 )) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2026/03/07 v6.0 Page Geometry
+Package: geometry 2026/11/03 v6.1 Page Geometry
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
@@ -791,7 +791,7 @@ Package: fontspec-xetex 2026/08/11 v2.9h Font selection for XeLaTeX and LuaLaTeX
 \l__fontspec_tmpb_dim=\dimen297
 \l__fontspec_tmpc_dim=\dimen298
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/base/fontenc.sty
-Package: fontenc 2025/07/18 v2.1d Standard LaTeX package
+Package: fontenc 2026-07-31 v2.2a Standard LaTeX package
 ) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.cfg))) (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.sty
 Package: xkeyval 2025/11/04 v2.10 package option processing (HA)
 (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/Users/thiyangashaminitalagala/Library/TinyTeX/texmf-dist/tex/generic/xkeyval/xkvutils.tex
@@ -992,6 +992,8 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [2]
+File: figures/figure1.png Graphic file (type bmp)
+<figures/figure1.png>
 File: /Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
 
@@ -1001,24 +1003,34 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
-[3] (./paper.aux)
+[3]
+File: /Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
+
+Package fancyhdr Warning: \headheight is too small (62.59596pt): 
+(fancyhdr)                Make it at least 63.55022pt, for example:
+(fancyhdr)                \setlength{\headheight}{63.55022pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
+
+[4] (./paper.aux)
  ***********
-LaTeX2e <2026-06-01>
+LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
  ***********
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: 31549ADD394EA32B8F17DDDDFB7E3C2D;893.
+(rerunfilecheck)             Checksum: ECE69AB5A5FA11A62458CC9BEF913AA2;893.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36684 strings out of 469689
- 763134 string characters out of 5462183
- 1653707 words of memory out of 5000000
- 65230 multiletter control sequences out of 15000+600000
+ 36781 strings out of 469607
+ 764800 string characters out of 5459358
+ 1657218 words of memory out of 5000000
+ 65406 multiletter control sequences out of 15000+600000
  635361 words of font info for 88 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  92i,13n,94p,1002b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on paper.pdf (3 pages).
+Output written on paper.pdf (4 pages).

@@ -98,7 +98,7 @@ leaders <- data.frame(x    = c(p_start$x, p_end$x),
                       yend = c(z_start$y, z_end$y))
 
 # ---- plot ------------------------------------------------------------------
-cols <- setNames(c("#1D9E75", "#1D9E75", "#D85A30"), ring_lab)
+cols <- setNames(c("#1b9e77", "#d95f02", "#7570b3"), ring_lab)
 
 p <- ggplot() +
   # rings and month ticks
