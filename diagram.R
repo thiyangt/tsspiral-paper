@@ -1,3 +1,5 @@
+#### ---- Figure 1 ----
+
 # Three annual rings with January of one year split into 31 daily segments
 # Needs only ggplot2.
 
@@ -132,3 +134,78 @@ p <- ggplot() +
 
 print(p)
 # ggsave("tsspiral_rings_january.png", p, width = 9, height = 6, dpi = 300, bg = "white")
+
+#### ---- Figure 2 ----
+library(readr)
+library(tsspiral)
+library(viridis)
+library(ggplot2)
+library(tsibble)
+library(tidyverse)
+library(patchwork)
+
+data(tourism.srilanka)
+ts <- tourism.srilanka |>
+  mutate(Date = dmy(Date)) |>        
+  as_tsibble(index = Date)
+p1 <- ggplot(ts, aes(x=Date, y=Value)) + geom_line() + ggtitle("(a) ggplot2: geom_line")
+
+p2 <- ggplot(
+  ts,
+  aes(
+    x = Date,
+    y = Value,
+    fill = Value
+  )
+) +
+  geom_tsspiral(
+    ring_spacing = 2
+  ) +
+  scale_fill_viridis_c(
+    option = "inferno",
+    direction = -1,
+    guide = guide_colorbar(reverse = FALSE)
+  ) +
+  theme_void() + ggtitle("(b) tsspiral: geom_tsspiral")
+
+git_colours <- rev(c(
+  "#d73027",
+  "#f46d43",
+  "#fdae61",
+  "#ffffbf",
+  "#74add1",
+  "#4575b4"
+))
+
+p3 <- ts |>
+  dplyr::mutate(
+    Value_group = cut(
+      Value,
+      breaks = c(-Inf, 999, 2500, 5000, 7500, 10000, Inf),
+      labels = c(
+        "<1000",
+        "1000–2500",
+        "2501–5000",
+        "5001–7500",
+        "7501–10000",
+        ">10000"
+      ),
+      right = TRUE
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = Date,
+      y = Value,
+      fill = Value_group
+    )
+  ) +
+  geom_tsspiral(
+    ring_spacing = 2
+  ) +
+  scale_fill_manual(
+    values = git_colours,
+    drop = FALSE
+  ) +
+  theme_void() + ggtitle("(c) tsspiral: geom_tsspiral")
+(p1/(p2|p3))

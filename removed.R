@@ -20,17 +20,7 @@ Here are two motivation example. \@ref(fig:p1) shows the tie series plot of  dai
   7. How do recurring seasonal patterns differ across years—for example, between January 2023, January 2024, and January 2025?
   
   ```{r p1, warning=FALSE, message=FALSE, eval=FALSE, echo=FALSE}
-library(readr)
-library(tsspiral)
-library(viridis)
-library(ggplot2)
-library(tsibble)
-library(tidyverse)
-data(tourism.srilanka)
-ts <- tourism.srilanka |>
-  mutate(Date = dmy(Date)) |>        
-  as_tsibble(index = Date)
-p1 <- ggplot(ts, aes(x=Date, y=Value)) + geom_line()
+
 
 ped_hourly <- read_csv("data/ped_hourly.csv")
 p2 <- ggplot(ped_hourly, aes(x=DateHour,
@@ -45,66 +35,6 @@ To obtain a broader picture of the patterns in the two situations described abov
 
 ```{r, fig.height=3, fig.width=3, eval=FALSE, echo=FALSE}
 library(patchwork)
-p1 <- ggplot(
-  ts,
-  aes(
-    x = Date,
-    y = Value,
-    fill = Value
-  )
-) +
-  geom_tsspiral(
-    ring_spacing = 2
-  ) +
-  scale_fill_viridis_c(
-    option = "inferno",
-    direction = -1,
-    guide = guide_colorbar(reverse = FALSE)
-  ) +
-  theme_void()
-```
-
-```{r, fig.height=3, fig.width=6, eval=FALSE, echo=FALSE}
-git_colours <- rev(c(
-  "#d73027",
-  "#f46d43",
-  "#fdae61",
-  "#ffffbf",
-  "#74add1",
-  "#4575b4"
-))
-
-p2 <- ts |>
-  dplyr::mutate(
-    Value_group = cut(
-      Value,
-      breaks = c(-Inf, 999, 2500, 5000, 7500, 10000, Inf),
-      labels = c(
-        "<1000",
-        "1000–2500",
-        "2501–5000",
-        "5001–7500",
-        "7501–10000",
-        ">10000"
-      ),
-      right = TRUE
-    )
-  ) |>
-  ggplot(
-    aes(
-      x = Date,
-      y = Value,
-      fill = Value_group
-    )
-  ) +
-  geom_tsspiral(
-    ring_spacing = 2
-  ) +
-  scale_fill_manual(
-    values = git_colours,
-    drop = FALSE
-  ) +
-  theme_void()
 
 p3 <- ggplot(
   ts,
@@ -199,4 +129,4 @@ calendar_hourly_polar(
 
 
 #####
-@rakuschek2026guided pointed out circular version of time series plots has both advantage and disadvantages. Hence @rakuschek2026guided suggested to use both line and circular version of the plots to get a better idea of the data rather than using circular plots as a replacement to line plots. 
+

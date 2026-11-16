@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.11.15)  15 NOV 2026 21:07
+This is XeTeX, Version 3.141592653-2.6-0.999998 (TeX Live 2026) (preloaded format=xelatex 2026.11.15)  16 NOV 2026 03:45
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1004,6 +1004,8 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
 [3]
+File: figures/figure2.png Graphic file (type bmp)
+<figures/figure2.png>
 File: /Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
 </Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
 
@@ -1023,24 +1025,38 @@ Package fancyhdr Warning: \headheight is too small (62.59596pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
 
-[5] (./paper.aux)
+[5]
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 522.
+
+File: /Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png Graphic file (type bmp)
+</Library/Frameworks/R.framework/Versions/4.6/Resources/library/rticles/rmarkdown/templates/joss/resources/JOSS-logo.png>
+
+Package fancyhdr Warning: \headheight is too small (62.59596pt): 
+(fancyhdr)                Make it at least 63.55022pt, for example:
+(fancyhdr)                \setlength{\headheight}{63.55022pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-0.95425pt}.
+
+[6] (./paper.aux)
  ***********
 LaTeX2e <2026-11-01>
 L3 programming layer <2026-09-09>
  ***********
 Package rerunfilecheck Info: File `paper.out' has not changed.
-(rerunfilecheck)             Checksum: ECE69AB5A5FA11A62458CC9BEF913AA2;893.
+(rerunfilecheck)             Checksum: 6222CD13A06EB3104270F9647FA13891;1034.
 Package logreq Info: Writing requests to 'paper.run.xml'.
 \openout1 = `paper.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 36783 strings out of 469607
- 764862 string characters out of 5459358
- 1657218 words of memory out of 5000000
- 65408 multiletter control sequences out of 15000+600000
- 635361 words of font info for 88 fonts, out of 8000000 for 9000
+ 36811 strings out of 469607
+ 765483 string characters out of 5459358
+ 1657759 words of memory out of 5000000
+ 65434 multiletter control sequences out of 15000+600000
+ 635369 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  92i,13n,94p,1002b,850s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on paper.pdf (5 pages).
+Output written on paper.pdf (6 pages).
